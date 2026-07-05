@@ -1,0 +1,24 @@
+{
+  "name": "soderra",
+  "version": "1.0.0",
+  "description": "SODERRA - Digital collection of works",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J-A-SOD/SODERRA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/J-A-SOD/SODERRA/issues"
+  },
+  "homepage": "https://github.com/J-A-SOD/SODERRA#readme",
+  "dependencies": {
+    "three": "^0.185.1"
+  }
+}

@@ -1,0 +1,41 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.scene {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scene-1 {
+    background: #111;
+}
+
+.scene-2 {
+    background: #333;
+}
+
+.scene-3 {
+    background: #555;
+}
+
+.scene-4 {
+    background: #777;
+}
+
+h1,
+h2,
+p {
+    color: white;
+    font-family: Arial, sans-serif;
+}

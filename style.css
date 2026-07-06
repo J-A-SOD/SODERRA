@@ -23,6 +23,10 @@ body {
     align-items: center;
 }
 
+.scene-0 {
+    background: #000;
+}
+
 .scene-1 {
     background: #111;
 }

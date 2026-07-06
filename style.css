@@ -5,8 +5,14 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Satoshi-Variable';
+    src: url('./fonts/Satoshi-Variable.woff2') format('opentype');
+}
+
 body {
     overflow-x: hidden;
+    font-family: 'Satoshi-Variable', sans-serif;
 }
 
 .scene {
@@ -38,4 +44,30 @@ h2,
 p {
     color: white;
     font-family: Arial, sans-serif;
+}
+
+/* HEADER FIXED NAVIGATION --------------------------------- */
+
+.header-nav {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  font-size: 20px;
+}
+
+.header-nav a {
+  flex: 1;   
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: auto;
+  transition: 0.3s ease;
+}
+
+.header-nav a:hover {
+  opacity: 0.6;
+  cursor: auto;
 }

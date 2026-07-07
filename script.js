@@ -32,7 +32,7 @@ import { GLTFLoader } from './libs/GLTFLoader.js';
 const loader = new GLTFLoader();
 
 loader.load(
-    './assets/models/hub.glb',
+    './assets/models/cylinder.glb',
     function (gltf) {
         const model = gltf.scene;
 

@@ -1,3 +1,5 @@
+console.log("script loaded");
+
 // 3D MODEL FOR SCENE 3 of LANDING PAGE
 
 import * as THREE from 'three';
@@ -39,5 +41,7 @@ function animate() {
 
     renderer.render(scene, camera);
 }
+
+renderer.setClearColor(0xff0000);
 
 animate();

@@ -6,6 +6,8 @@ import * as THREE from './libs/three.module.js';
 
 const container = document.getElementById('model-container');
 
+console.log(container);
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(

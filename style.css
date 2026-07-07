@@ -15,59 +15,6 @@ body {
     font-family: 'Satoshi-Variable', sans-serif;
 }
 
-/* LANDING PAGE SCENES */
-
-.scene {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.scene-0 {
-    background: #000;
-}
-
-.scene-1 {
-    background: #111;
-}
-
-.scene-2 {
-    background: #333;
-}
-
-.scene-3 {
-    background: #00000000;
-    min-height: 200vh;
-    position: relative;
-    z-index: -1;
-}
-
-.scene-4 {
-    background: #777;
-}
-
-/* 3D MODEL */
-
-#model-container {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-}
-
-
-
-h1,
-h2,
-p {
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
 /* HEADER FIXED NAVIGATION --------------------------------- */
 
 .header-nav {
@@ -93,3 +40,59 @@ p {
   opacity: 0.6;
   cursor: auto;
 }
+
+/* LANDING PAGE SCENES */
+
+.scene {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scene-0 {
+    background: #000;
+}
+
+.scene-1 {
+    background: #111;
+}
+
+.scene-2 {
+    background: #333;
+}
+
+.scene-3 {
+    background: transparent;
+    min-height: 200vh;
+    position: relative;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.scene-4 {
+    background: #777;
+}
+
+/* 3D MODEL */
+
+#model-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    border: 3px solid rgb(255, 0, 170);
+}
+
+
+
+h1,
+h2,
+p {
+    color: white;
+    font-family: Arial, sans-serif;
+}
+

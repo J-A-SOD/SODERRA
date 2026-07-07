@@ -44,6 +44,6 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-renderer.setClearColor(0xff0000);
+renderer.setClearColor(0x000000, 0);
 
 animate();

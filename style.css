@@ -15,6 +15,8 @@ body {
     font-family: 'Satoshi-Variable', sans-serif;
 }
 
+/* LANDING PAGE SCENES */
+
 .scene {
     height: 100vh;
     width: 100%;
@@ -37,11 +39,26 @@ body {
 
 .scene-3 {
     background: #555;
+    min-height: 200vh;
+    position: relative;
 }
 
 .scene-4 {
     background: #777;
 }
+
+/* 3D MODEL */
+
+#model-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+
 
 h1,
 h2,

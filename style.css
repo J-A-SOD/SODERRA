@@ -7,7 +7,12 @@
 
 @font-face {
     font-family: 'Satoshi-Variable';
-    src: url('./fonts/Satoshi-Variable.woff2') format('opentype');
+    src: url('./assets/fonts/Satoshi-Variable.woff2') format('opentype');
+}
+
+@font-face {
+    font-family: 'Zodiac-Variable';
+    src: url('./assets/fonts/Zodiac-Variable.woff2') format('opentype');
 }
 
 body {

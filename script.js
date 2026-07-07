@@ -26,12 +26,37 @@ renderer.setSize(
 
 container.appendChild(renderer.domElement);
 
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(),
-    new THREE.MeshNormalMaterial()
+
+import { GLTFLoader } from './libs/GLTFLoader.js';
+
+const loader = new GLTFLoader();
+
+loader.load(
+    './assets/models/hub.glb',
+    function (gltf) {
+        const model = gltf.scene;
+
+        model.scale.set(1, 1, 1);
+        model.position.set(0, 0, 0);
+
+        scene.add(model);
+
+        animate();
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            model.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+    },
+    undefined,
+    function (error) {
+        console.error(error);
+    }
 );
 
-scene.add(cube);
 
 camera.position.z = 3;
 

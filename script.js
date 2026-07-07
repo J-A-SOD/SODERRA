@@ -2,7 +2,7 @@ console.log("script loaded");
 
 // 3D MODEL FOR SCENE 3 of LANDING PAGE
 
-import * as THREE from 'three';
+import * as THREE from './libs/three.module.js';
 
 const container = document.getElementById('model-container');
 

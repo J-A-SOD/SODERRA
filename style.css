@@ -38,9 +38,10 @@ body {
 }
 
 .scene-3 {
-    background: #555;
+    background: #ffffff00;
     min-height: 200vh;
     position: relative;
+    overflow: hidden;
 }
 
 .scene-4 {
@@ -55,7 +56,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 1;
+    z-index: 10;
 }
 
 

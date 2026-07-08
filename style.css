@@ -91,18 +91,23 @@ body {
         transform 1.5s ease,
         opacity 0.5s ease;
 }
-/* 
-#intro-canvas {
-    position: absolute;
-    inset: 0;
-
-    z-index: 11;
-} */
 
 #axis-top,
 #axis-bottom,
 .axis-label {
     z-index: 15;
+}
+
+#arch,
+#inter,
+#lens,
+#piano {
+    opacity: 0;
+    transform: translate(0, 0);
+
+    transition:
+        transform 1.2s ease,
+        opacity 1.2s ease;
 }
 
 /* CURSOR GLASS CIRCLE */

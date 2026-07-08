@@ -31,23 +31,20 @@ const axisTop = document.getElementById('axis-top');
 const axisBottom = document.getElementById('axis-bottom');
 const axisLine = document.getElementById('axis-line');
 
-arch.style.opacity = 1;
-inter.style.opacity = 1;
-lens.style.opacity = 1;
-piano.style.opacity = 1;
+const x = window.innerWidth * 0.02;
+const y = window.innerHeight * 0.32;
 
 arch.style.transform =
-    'translate(-200px, -250px)';
+    `translate(-${x}px, -${y}px)`;
 
 inter.style.transform =
-    'translate(200px, -100px)';
+    `translate(${x}px, -${y}px)`;
 
 lens.style.transform =
-    'translate(-160px, 100px)';
+    `translate(-${x}px, ${y}px)`;
 
 piano.style.transform =
-    'translate(220px, 250px)';
-
+    `translate(${x}px, ${y}px)`;
 
 introOverlay.addEventListener('click', () => {
 

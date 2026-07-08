@@ -71,8 +71,8 @@ body {
 }
 
 .scene-3 {
-    background: transparent;
-    min-height: 200vh;
+    background: #4a484e;
+    min-height: 400vh;
     position: relative;
     z-index: -1;
     overflow: hidden;
@@ -89,9 +89,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
-    border: 3px solid rgb(255, 0, 170);
 }
 
 

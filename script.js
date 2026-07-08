@@ -2,7 +2,10 @@ console.log("script loaded");
 
 // 3D MODEL FOR SCENE 3 of LANDING PAGE
 
-import * as THREE from './libs/three.module.js';
+
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 
 const container = document.getElementById('model-container');
 

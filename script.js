@@ -9,6 +9,142 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
 
+// INTRO ANIM
+
+
+const introOverlay = document.getElementById('intro-overlay');
+
+const axisTop = document.getElementById('axis-top');
+const axisBottom = document.getElementById('axis-bottom');
+const axisLine = document.getElementById('axis-line');
+
+
+
+
+introOverlay.addEventListener('click', () => {
+        
+    const topLabel = document.getElementById('top-label');
+    const bottomLabel = document.getElementById('bottom-label');
+    const target = 120;
+    const duration = 1200;
+
+    axisTop.style.transform =
+        'translateY(-240px)';
+
+    axisBottom.style.transform =
+        'translateY(240px)';
+
+    axisLine.style.height = '480px';
+
+    const start = performance.now();
+
+    function update(time) {
+
+        const progress = Math.min(
+            (time - start) / duration,
+            1
+        );
+
+        
+        const value = target * progress;
+
+        console.log(value);
+
+        
+        topLabel.textContent =
+            value.toFixed(3);
+
+        bottomLabel.textContent =
+            value.toFixed(3);
+
+        console.log(topLabel.textContent);
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+
+    }
+
+    requestAnimationFrame(update);
+
+});
+
+
+
+// Fade in ------------------------
+
+window.addEventListener("load", () => {
+  const fades = document.querySelectorAll(".fade");
+
+  fades.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add("show");
+    }, i * 300);
+  });
+});
+
+// CURSOR --------------------------------------------------
+const cursor = document.querySelector(".cursor-glass");
+const links = document.querySelectorAll(".header-nav a");
+
+let lastX = 0;
+let lastY = 0;
+let velocity = 0;
+
+let currentScale = 1;
+let targetScale = 1;
+
+
+document.addEventListener("mousemove", (e) => {
+
+  if (!cursor) return;
+
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
+
+  velocity = Math.sqrt(dx * dx + dy * dy);
+
+  lastX = e.clientX;
+  lastY = e.clientY;
+
+  let speedScale = Math.max(0.5, 1 - velocity / 80);
+
+  let minDistance = Infinity;
+
+  links.forEach(link => {
+    const rect = link.getBoundingClientRect();
+
+    const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
+    const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
+
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    minDistance = Math.min(minDistance, distance);
+  });
+
+  const maxDist = 200;
+  let proximity = Math.max(0, 1 - minDistance / maxDist);
+
+  targetScale = speedScale * (1 - proximity * 0.8);
+});
+
+function animateCursor() {
+
+  if (!cursor) return;
+
+  currentScale += (targetScale - currentScale) * 0.06;
+
+  cursor.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+// 
 
 
 const container = document.getElementById('model-container');
@@ -78,7 +214,7 @@ function convertToOutline(model) {
             const outline = new THREE.LineSegments(
                 edges,
                 new THREE.LineBasicMaterial({
-                    color: '#fcfcfc',
+                    color: '#424242',
                 })
             );
 
@@ -90,7 +226,7 @@ function convertToOutline(model) {
             outline.scale.copy(child.scale);
             
             child.material = new THREE.MeshBasicMaterial({
-                color: '#4a484e',
+                color: '#b8b5ab',
             });
 
             child.parent.add(outline);

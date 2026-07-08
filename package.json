@@ -4,8 +4,10 @@
   "description": "SODERRA - Digital collection of works",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "dev": "vite",
+    "build": "vite build"
+  }
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/J-A-SOD/SODERRA.git"
@@ -18,7 +20,9 @@
     "url": "https://github.com/J-A-SOD/SODERRA/issues"
   },
   "homepage": "https://github.com/J-A-SOD/SODERRA#readme",
-  "dependencies": {
-    "three": "^0.185.1"
+  "devDependencies": {
+    "vite": "^8.1.3"
   }
 }
+
+

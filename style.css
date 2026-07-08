@@ -82,6 +82,19 @@ body {
     white-space: nowrap;
 }
 
+#intro-canvas {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+}
+
+#axis-top,
+#axis-bottom,
+#axis-line,
+.axis-label {
+    z-index: 2;
+}
 
 /* CURSOR GLASS CIRCLE */
 

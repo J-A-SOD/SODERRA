@@ -149,6 +149,7 @@ const viewportHeight = window.innerHeight;
 
 const xOffset = viewportWidth * 0.15;
 const yOffset = viewportHeight * 0.25;
+
 const spread = 40;
 
 let anim_arch;
@@ -167,7 +168,7 @@ loader.load('./assets/models/anim_arch.glb', (gltf) => {
 loader.load('./assets/models/anim_inter.glb', (gltf) => {
     anim_inter = gltf.scene;
 
-    anim_inter.position.set(-spread, spread, 0);
+    anim_inter.position.set( spread, spread * 0.4, 0);
 
     introScene.add(anim_inter);
 });
@@ -175,7 +176,7 @@ loader.load('./assets/models/anim_inter.glb', (gltf) => {
 loader.load('./assets/models/anim_lens.glb', (gltf) => {
     anim_lens = gltf.scene;
 
-    anim_lens.position.set(-spread, spread, 0);
+    anim_lens.position.set(-spread, -spread * 0.4, 0);
     
     introScene.add(anim_lens);
 });
@@ -183,13 +184,41 @@ loader.load('./assets/models/anim_lens.glb', (gltf) => {
 loader.load('./assets/models/anim_piano.glb', (gltf) => {
     anim_piano = gltf.scene;
 
-    anim_piano.position.set(-spread, spread, 0);
+    anim_piano.position.set( spread, -spread, 0);
 
 
     introScene.add(anim_piano);
 });
 
 const introScene = new THREE.Scene();
+
+const introContainer =
+    document.getElementById('intro-canvas');
+
+const introRenderer =
+    new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true
+    });
+
+introRenderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+introContainer.appendChild(
+    introRenderer.domElement
+);
+
+const introCamera = new THREE.PerspectiveCamera(
+    25,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
+introCamera.position.z = 100;
+
 
 // ANIMATED HUB
 
@@ -450,6 +479,11 @@ function animate() {
     }
 
     camera.lookAt(0, camera.position.y, 0);
+
+    introRenderer.render(
+        introScene,
+        introCamera
+    );
     composer.render();
 }
 

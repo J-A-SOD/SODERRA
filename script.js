@@ -22,50 +22,41 @@ const axisLine = document.getElementById('axis-line');
 
 
 introOverlay.addEventListener('click', () => {
-        
+
     const topLabel = document.getElementById('top-label');
     const bottomLabel = document.getElementById('bottom-label');
-    const target = 120;
+
+    const target = window.innerHeight * 0.35;
     const duration = 1200;
 
     axisTop.style.transform =
-        'translateY(-240px)';
+        `translateY(-${target}px)`;
 
     axisBottom.style.transform =
-        'translateY(240px)';
+        `translateY(${target}px)`;
 
-    axisLine.style.height = '480px';
+    axisLine.style.height =
+        `${target * 2}px`;
 
-    const start = performance.now();
+    let current = 0;
 
-    function update(time) {
+    const interval = setInterval(() => {
 
-        const progress = Math.min(
-            (time - start) / duration,
-            1
-        );
+        current += target / 60;
 
-        
-        const value = target * progress;
+        topLabel.innerText = current.toFixed(3);
+        bottomLabel.innerText = current.toFixed(3);
 
-        console.log(value);
+        if (current >= target) {
 
-        
-        topLabel.textContent =
-            value.toFixed(3);
+            clearInterval(interval);
 
-        bottomLabel.textContent =
-            value.toFixed(3);
+            topLabel.innerText = target.toFixed(3);
+            bottomLabel.innerText = target.toFixed(3);
 
-        console.log(topLabel.textContent);
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
         }
 
-    }
-
-    requestAnimationFrame(update);
+    }, 20);
 
 });
 
@@ -150,6 +141,65 @@ animateCursor();
 const container = document.getElementById('model-container');
 
 console.log(container);
+
+// ANIMATED INTRO
+
+let anim_arch;
+let anim_inter;
+let anim_lens;
+let anim_piano;
+
+loader.load('./assets/models/anim_arch.glb', (gltf) => {
+    anim_arch = gltf.scene;
+
+    anim_arch.position.set(
+        -200,
+        150,
+        0
+    );
+
+    introScene.add(anim_arch);
+});
+
+loader.load('./assets/models/anim_inter.glb', (gltf) => {
+    anim_inter = gltf.scene;
+
+    anim_inter.position.set(
+        200,
+        75,
+        0
+    );
+
+    introScene.add(anim_inter);
+});
+
+loader.load('./assets/models/anim_lens.glb', (gltf) => {
+    anim_lens = gltf.scene;
+
+    anim_lens.position.set(
+        -150,
+        0,
+        0
+    );
+
+    introScene.add(anim_lens);
+});
+
+loader.load('./assets/models/anim_piano.glb', (gltf) => {
+    anim_piano = gltf.scene;
+
+    anim_piano.position.set(
+        150,
+        -75,
+        0
+    );
+
+    introScene.add(anim_piano);
+});
+
+const introScene = new THREE.Scene();
+
+// ANIMATED HUB
 
 const scene = new THREE.Scene();
 

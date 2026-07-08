@@ -11,6 +11,19 @@ import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
 
 // INTRO ANIM
 
+const arch = document.getElementById('arch');
+const inter = document.getElementById('inter');
+const lens = document.getElementById('lens');
+const piano = document.getElementById('piano');
+
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+
+const xOffset = viewportWidth * 0.15;
+const yOffset = viewportHeight * 0.25;
+
+const spread = 40;
+
 
 const introOverlay = document.getElementById('intro-overlay');
 
@@ -18,7 +31,22 @@ const axisTop = document.getElementById('axis-top');
 const axisBottom = document.getElementById('axis-bottom');
 const axisLine = document.getElementById('axis-line');
 
+arch.style.opacity = 1;
+inter.style.opacity = 1;
+lens.style.opacity = 1;
+piano.style.opacity = 1;
 
+arch.style.transform =
+    'translate(-200px, -250px)';
+
+inter.style.transform =
+    'translate(200px, -100px)';
+
+lens.style.transform =
+    'translate(-160px, 100px)';
+
+piano.style.transform =
+    'translate(220px, 250px)';
 
 
 introOverlay.addEventListener('click', () => {
@@ -59,8 +87,6 @@ introOverlay.addEventListener('click', () => {
     }, 20);
 
 });
-
-
 
 // Fade in ------------------------
 
@@ -137,88 +163,77 @@ animateCursor();
 
 // 
 
-
 const container = document.getElementById('model-container');
 
 console.log(container);
 
 // ANIMATED INTRO
 
-const viewportWidth = window.innerWidth;
-const viewportHeight = window.innerHeight;
+// const introScene = new THREE.Scene();
 
-const xOffset = viewportWidth * 0.15;
-const yOffset = viewportHeight * 0.25;
+// const introContainer =
+//     document.getElementById('intro-canvas');
 
-const spread = 40;
+// const introRenderer =
+//     new THREE.WebGLRenderer({
+//         alpha: true,
+//         antialias: true
+//     });
 
-let anim_arch;
-let anim_inter;
-let anim_lens;
-let anim_piano;
+// introRenderer.setSize(
+//     window.innerWidth,
+//     window.innerHeight
+// );
 
-loader.load('./assets/models/anim_arch.glb', (gltf) => {
-    anim_arch = gltf.scene;
+// introContainer.appendChild(
+//     introRenderer.domElement
+// );
 
-    anim_arch.position.set(-spread, spread, 0);
+// const introCamera = new THREE.PerspectiveCamera(
+//     25,
+//     window.innerWidth / window.innerHeight,
+//     0.1,
+//     1000
+// );
 
-    introScene.add(anim_arch);
-});
+// introCamera.position.z = 100;
 
-loader.load('./assets/models/anim_inter.glb', (gltf) => {
-    anim_inter = gltf.scene;
+// let anim_arch;
+// let anim_inter;
+// let anim_lens;
+// let anim_piano;
 
-    anim_inter.position.set( spread, spread * 0.4, 0);
+// loader.load('./assets/models/anim_arch.glb', (gltf) => {
+//     anim_arch = gltf.scene;
 
-    introScene.add(anim_inter);
-});
+//     anim_arch.position.set(-spread, spread, 0);
+//     anim_arch.scale.set(9, 9, 9);
+//     introScene.add(anim_arch);
+// });
 
-loader.load('./assets/models/anim_lens.glb', (gltf) => {
-    anim_lens = gltf.scene;
+// loader.load('./assets/models/anim_inter.glb', (gltf) => {
+//     anim_inter = gltf.scene;
 
-    anim_lens.position.set(-spread, -spread * 0.4, 0);
-    
-    introScene.add(anim_lens);
-});
+//     anim_inter.position.set( spread, spread * 0.4, 0);
+//     anim_inter.scale.set(9, 9, 9);
+//     introScene.add(anim_inter);
+// });
 
-loader.load('./assets/models/anim_piano.glb', (gltf) => {
-    anim_piano = gltf.scene;
+// loader.load('./assets/models/anim_lens.glb', (gltf) => {
+//     anim_lens = gltf.scene;
 
-    anim_piano.position.set( spread, -spread, 0);
+//     anim_lens.position.set(-spread, -spread * 0.4, 0);
+//     anim_lens.scale.set(9, 9, 9);
+//     introScene.add(anim_lens);
+// });
 
+// loader.load('./assets/models/anim_piano.glb', (gltf) => {
+//     anim_piano = gltf.scene;
 
-    introScene.add(anim_piano);
-});
-
-const introScene = new THREE.Scene();
-
-const introContainer =
-    document.getElementById('intro-canvas');
-
-const introRenderer =
-    new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: true
-    });
-
-introRenderer.setSize(
-    window.innerWidth,
-    window.innerHeight
-);
-
-introContainer.appendChild(
-    introRenderer.domElement
-);
-
-const introCamera = new THREE.PerspectiveCamera(
-    25,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
-
-introCamera.position.z = 100;
-
+//     anim_piano.position.set( spread, -spread, 0);
+//     anim_piano.scale.set(9, 9, 9);
+//     introScene.add(anim_piano);
+// });
 
 // ANIMATED HUB
 
@@ -323,6 +338,7 @@ let cogsneg;
 let cogspos;
 
 // loading the models //
+
 loader.load('./assets/models/staticbase.glb', (gltf) => {
     staticbase = gltf.scene;
     convertToOutline(staticbase);
@@ -484,6 +500,7 @@ function animate() {
         introScene,
         introCamera
     );
+
     composer.render();
 }
 

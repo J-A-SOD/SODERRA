@@ -33,7 +33,7 @@ body {
 
     background: #d9d6d2;
 
-    z-index: 10000;
+    z-index: 10;
 
     display: flex;
     justify-content: center;
@@ -45,17 +45,17 @@ body {
     width: 20px;
     height: 20px;
 
-    background: rgb(122, 55, 55);
+    background: #7a3737;
 
     position: absolute;
-    z-index: 5;
+    z-index: 15;
     transition: transform 1.5s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
 #axis-line {
     width: 2px;
     height: 0;
-    z-index: 4;
+    z-index: 14;
     
     background: repeating-linear-gradient(
             to bottom,
@@ -82,18 +82,27 @@ body {
     white-space: nowrap;
 }
 
+.intro-part {
+    position: absolute;
+    width: 35vh;
+    opacity: 1;
+
+    transition:
+        transform 1.5s ease,
+        opacity 0.5s ease;
+}
+/* 
 #intro-canvas {
     position: absolute;
     inset: 0;
 
-    z-index: 1;
-}
+    z-index: 11;
+} */
 
 #axis-top,
 #axis-bottom,
-#axis-line,
 .axis-label {
-    z-index: 2;
+    z-index: 15;
 }
 
 /* CURSOR GLASS CIRCLE */
@@ -112,7 +121,7 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.01);
-  border: 3px solid rgba(219, 214, 214, 0.1);
+  border: 3px solid #7a3737;
 }
 
 /* HEADER FIXED NAVIGATION --------------------------------- */
@@ -151,6 +160,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
 /* LANDING PAGE SCENES */
 
 .scene {
@@ -185,7 +195,7 @@ body {
     background: #777;
 }
 
-/* 3D MODEL */
+/* HUB 3D MODEL */
 
 #model-container {
     position: relative;
@@ -196,15 +206,12 @@ body {
     z-index: 1;
 }
 
-
-
 h1,
 h2,
 p {
     color: white;
     font-family: Arial, sans-serif;
 }
-
 
 /* SCROLL BAR */
 

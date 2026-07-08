@@ -144,6 +144,13 @@ console.log(container);
 
 // ANIMATED INTRO
 
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+
+const xOffset = viewportWidth * 0.15;
+const yOffset = viewportHeight * 0.25;
+const spread = 40;
+
 let anim_arch;
 let anim_inter;
 let anim_lens;
@@ -152,11 +159,7 @@ let anim_piano;
 loader.load('./assets/models/anim_arch.glb', (gltf) => {
     anim_arch = gltf.scene;
 
-    anim_arch.position.set(
-        -200,
-        150,
-        0
-    );
+    anim_arch.position.set(-spread, spread, 0);
 
     introScene.add(anim_arch);
 });
@@ -164,11 +167,7 @@ loader.load('./assets/models/anim_arch.glb', (gltf) => {
 loader.load('./assets/models/anim_inter.glb', (gltf) => {
     anim_inter = gltf.scene;
 
-    anim_inter.position.set(
-        200,
-        75,
-        0
-    );
+    anim_inter.position.set(-spread, spread, 0);
 
     introScene.add(anim_inter);
 });
@@ -176,23 +175,16 @@ loader.load('./assets/models/anim_inter.glb', (gltf) => {
 loader.load('./assets/models/anim_lens.glb', (gltf) => {
     anim_lens = gltf.scene;
 
-    anim_lens.position.set(
-        -150,
-        0,
-        0
-    );
-
+    anim_lens.position.set(-spread, spread, 0);
+    
     introScene.add(anim_lens);
 });
 
 loader.load('./assets/models/anim_piano.glb', (gltf) => {
     anim_piano = gltf.scene;
 
-    anim_piano.position.set(
-        150,
-        -75,
-        0
-    );
+    anim_piano.position.set(-spread, spread, 0);
+
 
     introScene.add(anim_piano);
 });

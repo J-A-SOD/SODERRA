@@ -11,19 +11,19 @@ import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
 
 // INTRO ANIM
 
-const arch = document.getElementById('arch');
-const inter = document.getElementById('inter');
-const lens = document.getElementById('lens');
-const piano = document.getElementById('piano');
-
+const introarch = document.getElementById('arch');
+const introinter = document.getElementById('inter');
+const introlens = document.getElementById('lens');
+const intropiano = document.getElementById('piano');
 const viewportWidth = window.innerWidth;
 const viewportHeight = window.innerHeight;
-
-const xOffset = viewportWidth * 0.15;
 const yOffset = viewportHeight * 0.25;
-
 const spread = 40;
+const introTextLeft =
+    document.getElementById('intro-text-left');
 
+const introTextRight =
+    document.getElementById('intro-text-right');
 
 const introOverlay = document.getElementById('intro-overlay');
 
@@ -31,20 +31,19 @@ const axisTop = document.getElementById('axis-top');
 const axisBottom = document.getElementById('axis-bottom');
 const axisLine = document.getElementById('axis-line');
 
-const x = window.innerWidth * 0.02;
-const y = window.innerHeight * 0.32;
+const y = window.innerHeight * 0.25;
+document.body.classList.add('intro-lock');
+introarch.style.transform =
+    `translateY(-${y}px)`;
 
-arch.style.transform =
-    `translate(-${x}px, -${y}px)`;
+intropiano.style.transform =
+    `translateY(-${y * 0.35}px)`;
 
-inter.style.transform =
-    `translate(${x}px, -${y}px)`;
+introlens.style.transform =
+    `translateY(${y * 0.35}px)`;
 
-lens.style.transform =
-    `translate(-${x}px, ${y}px)`;
-
-piano.style.transform =
-    `translate(${x}px, ${y}px)`;
+introinter.style.transform =
+    `translateY(${y}px)`;
 
 introOverlay.addEventListener('click', () => {
 
@@ -63,7 +62,58 @@ introOverlay.addEventListener('click', () => {
     axisLine.style.height =
         `${target * 2}px`;
 
+    setTimeout(() => {
+
+        setTimeout(() => {
+            introarch.style.opacity = 1;
+        }, duration);
+
+        setTimeout(() => {
+            intropiano.style.opacity = 1;
+        }, duration + 150);
+
+        setTimeout(() => {
+            introlens.style.opacity = 1;
+        }, duration + 300);
+
+        setTimeout(() => {
+            introinter.style.opacity = 1;
+        }, duration + 450);
+
+    }, duration);
+
+    setTimeout(() => {
+
+        introTextLeft.style.opacity = 1;
+        introTextRight.style.opacity = 1;
+
+    }, duration + 700);
+    
+    setTimeout(() => {
+
+        introarch.style.transform =
+            'translateY(0)';
+
+        introinter.style.transform =
+            'translateY(0)';
+
+        introlens.style.transform =
+            'translateY(0)';
+
+        intropiano.style.transform =
+            'translateY(0)';
+
+    }, duration + 10000);
+    
     let current = 0;
+
+    setTimeout(() => {
+
+        introOverlay.classList.add('hidden');
+
+        document.body.classList.remove('intro-lock');
+
+    }, duration + 2500);
 
     const interval = setInterval(() => {
 
@@ -492,11 +542,6 @@ function animate() {
     }
 
     camera.lookAt(0, camera.position.y, 0);
-
-    introRenderer.render(
-        introScene,
-        introCamera
-    );
 
     composer.render();
 }

@@ -1,11 +1,4 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* IMPORTING FONTS */
+/* IMPORTING FONTS ------------------------------------------------------------------ */
 
 @font-face {
     font-family: 'Satoshi-Variable';
@@ -17,6 +10,14 @@
     src: url('./assets/fonts/Zodiac-Variable.woff2') format('opentype');
 }
 
+/* BASE STYLES ---------------------------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     overflow-x: hidden;
     font-family: 'Satoshi-Variable', sans-serif;
@@ -24,7 +25,7 @@ body {
     background-color: #333;
 }
 
-/* INTRO */
+/* INTRO ANIMATION ------------------------------------------------------------------- */
 
 #intro-overlay {
     cursor: auto;
@@ -123,13 +124,13 @@ body {
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.01);
   border: 3px solid #7a3737;
 }
 
-/* HEADER FIXED NAVIGATION --------------------------------- */
+/* HEADER FIXED NAVIGATION -------------------------------------------------------- */
 
 .header-nav {
   position: fixed;
@@ -155,6 +156,8 @@ body {
   cursor: none;
 }
 
+/* FADE ANIMATION ---------------------------------------------------------------------- */
+
 .fade {
   opacity: 0;
   transform: translateX(10px);
@@ -166,7 +169,7 @@ body {
   transform: translateY(0);
 }
 
-/* LANDING PAGE SCENES */
+/* LANDING PAGE SCENES ------------------------------------------------------------------ */
 
 .scene {
     height: 100vh;
@@ -200,7 +203,7 @@ body {
     background: #777;
 }
 
-/* HUB 3D MODEL */
+/* HUB 3D MODEL ---------------------------------------------------------------------------- */
 
 #model-container {
     position: relative;
@@ -211,6 +214,8 @@ body {
     z-index: 1;
 }
 
+/* TYPOGRAPHY ---------------------------------------------------------------------- */
+
 h1,
 h2,
 p {
@@ -218,7 +223,7 @@ p {
     font-family: Arial, sans-serif;
 }
 
-/* SCROLL BAR */
+/* SCROLL BAR ---------------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
     width: 12px;

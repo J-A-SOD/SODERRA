@@ -22,7 +22,7 @@ body {
     overflow-x: hidden;
     font-family: 'Satoshi-Variable', sans-serif;
     cursor: none;
-    background-color: #333;
+    background-color: #ffffff;
     opacity: 1;
     transition: opacity 0.5s ease;
     animation: pageIn 0.4s ease;
@@ -67,18 +67,20 @@ body {
 /* INTRO ANIMATION ------------------------------------------------------------------- */
 
 #intro-overlay {
-    cursor: auto;
-    position: fixed;
+    cursor: none;
+    position: relative;
     inset: 0;
 
-    background: #555564;
+    background: #ffffff;
 
     z-index: 10;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
+
 
 #axis-top,
 #axis-bottom {
@@ -163,7 +165,7 @@ body {
 
     opacity: 0;
 
-    font-size: 6vw;
+    font-size: 5vw;
     line-height: 0.9;
 
     color: #424242;
@@ -171,16 +173,25 @@ body {
     transition: opacity 0.8s ease;
 }
 
+:root {
+    --name-offset: 10vw;
+}
+
 #intro-text-left {
-    left: 5vw;
-    text-align: left;
+    position: absolute;
+    left: calc(50% - var(--name-offset));
+    transform: translate(-100%, -50%);
+    top: 50%;
     font-weight: 1000;
+    text-align: right;
 }
 
 #intro-text-right {
-    right: 5vw;
-    text-align: right;
+    position: absolute;
     font-weight: 1000;
+    left: calc(50% + var(--name-offset));
+    transform: translateY(-50%);
+    top: 50%;
 }
 
 #intro-overlay {
@@ -198,6 +209,42 @@ body.intro-lock {
     overflow: hidden;
 }
 
+.corner-text {
+    position: absolute;
+
+    font-size: 0.75rem;
+    line-height: 1.4;
+
+    color: #424242;
+    opacity: 0;
+
+    letter-spacing: 0.08em;
+
+    transition: opacity 0.6s ease;
+}
+
+.corner-tl {
+    top: 2vh;
+    left: 2vw;
+}
+
+.corner-tr {
+    top: 2vh;
+    right: 2vw;
+    text-align: right;
+}
+
+.corner-bl {
+    bottom: 2vh;
+    left: 2vw;
+}
+
+.corner-br {
+    bottom: 2vh;
+    right: 2vw;
+    text-align: right;
+}
+
 /* CURSOR GLASS CIRCLE */
 
 .cursor-glass {
@@ -211,7 +258,7 @@ body.intro-lock {
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(5px);
   background: rgba(77, 56, 56, 0.062);
   border: 2px solid hsla(0, 7%, 38%, 0.13);
@@ -220,17 +267,20 @@ body.intro-lock {
 /* HEADER FIXED NAVIGATION -------------------------------------------------------- */
 
 .header-nav {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  display: flex;
-  font-size: 20px;
+    background: #2e2e2e;    
+    position: fixed;
+    top: 0px;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    font-size: 20px;
 }
 
 .header-nav a {
   flex: 1;   
+  padding: 1.5vh;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -277,10 +327,22 @@ body.intro-lock {
 .scene-2 {
     background: #333;
 }
+.scene-2 {
+    position: relative;
+}
 
+.scene-1 {
+    clip-path: polygon(
+        0 8vh,
+        100% 0,
+        100% 100%,
+        0 100%
+       
+    );
+}
 .scene-3 {
-    background: #b8b5ab;
-    min-height: 400vh;
+    background: #ffffff;
+    min-height: 380vh;
     position: relative;
     z-index: -1;
     overflow: hidden;

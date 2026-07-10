@@ -1,7 +1,13 @@
 console.log("script loaded");
+history.scrollRestoration = "manual";
+
+// LOAD RESET
+
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
 
 // 3D MODEL FOR SCENE 3 of LANDING PAGE
-
 
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -15,10 +21,7 @@ const introarch = document.getElementById('arch');
 const introinter = document.getElementById('inter');
 const introlens = document.getElementById('lens');
 const intropiano = document.getElementById('piano');
-const viewportWidth = window.innerWidth;
-const viewportHeight = window.innerHeight;
-const yOffset = viewportHeight * 0.25;
-const spread = 40;
+
 const introTextLeft =
     document.getElementById('intro-text-left');
 
@@ -32,6 +35,39 @@ const axisBottom = document.getElementById('axis-bottom');
 const axisLine = document.getElementById('axis-line');
 
 const y = window.innerHeight * 0.25;
+
+let assembled = false;
+
+let introHasPlayed = false;
+
+function setAssemblyState(isAssembled) {
+
+    if (isAssembled) {
+
+        introarch.style.transform = 'translateY(0)';
+        introinter.style.transform = 'translateY(0)';
+        introlens.style.transform = 'translateY(0)';
+        intropiano.style.transform = 'translateY(0)';
+
+    } else {
+
+        introarch.style.transform =
+            `translateY(-${y}px)`;
+
+        intropiano.style.transform =
+            `translateY(-${y * 0.35}px)`;
+
+        introlens.style.transform =
+            `translateY(${y * 0.35}px)`;
+
+        introinter.style.transform =
+            `translateY(${y}px)`;
+
+    }
+
+    assembled = isAssembled;
+}
+
 document.body.classList.add('intro-lock');
 introarch.style.transform =
     `translateY(-${y}px)`;
@@ -46,6 +82,8 @@ introinter.style.transform =
     `translateY(${y}px)`;
 
 introOverlay.addEventListener('click', () => {
+
+    if (introHasPlayed) return;
 
     const topLabel = document.getElementById('top-label');
     const bottomLabel = document.getElementById('bottom-label');
@@ -87,33 +125,31 @@ introOverlay.addEventListener('click', () => {
         introTextLeft.style.opacity = 1;
         introTextRight.style.opacity = 1;
 
-    }, duration + 700);
-    
+    }, duration + 900);
+
     setTimeout(() => {
 
-        introarch.style.transform =
-            'translateY(0)';
+        setAssemblyState(true);
 
-        introinter.style.transform =
-            'translateY(0)';
+    }, duration + 3000);
 
-        introlens.style.transform =
-            'translateY(0)';
-
-        intropiano.style.transform =
-            'translateY(0)';
-
-    }, duration + 10000);
+    setTimeout(() => {
+        document
+            .querySelectorAll('.corner-text')
+            .forEach(el => {
+                el.style.opacity = 1;
+            });
+    }, duration + 600);
     
     let current = 0;
 
     setTimeout(() => {
 
-        introOverlay.classList.add('hidden');
-
         document.body.classList.remove('intro-lock');
 
-    }, duration + 2500);
+        introHasPlayed = true;
+
+    }, duration + 3500);
 
     const interval = setInterval(() => {
 
@@ -135,6 +171,26 @@ introOverlay.addEventListener('click', () => {
 
 });
 
+axisTop.addEventListener('click', (e) => {
+
+    e.stopPropagation();
+
+    if (!introHasPlayed) return;
+
+    setAssemblyState(!assembled);
+
+});
+
+axisBottom.addEventListener('click', (e) => {
+
+    e.stopPropagation();
+
+    if (!introHasPlayed) return;
+
+    setAssemblyState(!assembled);
+
+});
+
 // Fade in ------------------------
 
 window.addEventListener("load", () => {
@@ -148,6 +204,7 @@ window.addEventListener("load", () => {
 });
 
 // CURSOR --------------------------------------------------
+
 const cursor = document.querySelector(".cursor-glass");
 
 let lastX = 0;
@@ -180,15 +237,12 @@ let minDistance = Infinity;
 const targets = [];
 
 // Always include intro targets
-if (!introOverlay.classList.contains('hidden')) {
+if (!introHasPlayed) {
     targets.push(
-        document.getElementById('axis-top'),
-        document.getElementById('axis-bottom')
+        axisTop,
+        axisBottom
     );
-}
-
-// After intro is gone, use header links
-if (introOverlay.classList.contains('hidden')) {
+} else {
     targets.push(
         ...document.querySelectorAll('.header-nav a')
     );
@@ -243,75 +297,15 @@ const container = document.getElementById('model-container');
 
 console.log(container);
 
-// ANIMATED INTRO
-
-// const introScene = new THREE.Scene();
-
-// const introContainer =
-//     document.getElementById('intro-canvas');
-
-// const introRenderer =
-//     new THREE.WebGLRenderer({
-//         alpha: true,
-//         antialias: true
-//     });
-
-// introRenderer.setSize(
-//     window.innerWidth,
-//     window.innerHeight
-// );
-
-// introContainer.appendChild(
-//     introRenderer.domElement
-// );
-
-// const introCamera = new THREE.PerspectiveCamera(
-//     25,
-//     window.innerWidth / window.innerHeight,
-//     0.1,
-//     1000
-// );
-
-// introCamera.position.z = 100;
-
-// let anim_arch;
-// let anim_inter;
-// let anim_lens;
-// let anim_piano;
-
-// loader.load('./assets/models/anim_arch.glb', (gltf) => {
-//     anim_arch = gltf.scene;
-
-//     anim_arch.position.set(-spread, spread, 0);
-//     anim_arch.scale.set(9, 9, 9);
-//     introScene.add(anim_arch);
-// });
-
-// loader.load('./assets/models/anim_inter.glb', (gltf) => {
-//     anim_inter = gltf.scene;
-
-//     anim_inter.position.set( spread, spread * 0.4, 0);
-//     anim_inter.scale.set(9, 9, 9);
-//     introScene.add(anim_inter);
-// });
-
-// loader.load('./assets/models/anim_lens.glb', (gltf) => {
-//     anim_lens = gltf.scene;
-
-//     anim_lens.position.set(-spread, -spread * 0.4, 0);
-//     anim_lens.scale.set(9, 9, 9);
-//     introScene.add(anim_lens);
-// });
-
-// loader.load('./assets/models/anim_piano.glb', (gltf) => {
-//     anim_piano = gltf.scene;
-
-//     anim_piano.position.set( spread, -spread, 0);
-//     anim_piano.scale.set(9, 9, 9);
-//     introScene.add(anim_piano);
-// });
-
 // ANIMATED HUB
+
+let activeScreen = null;
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+const screenOffset = -1.4; // tweak this
+
+
 
 const scene = new THREE.Scene();
 
@@ -400,6 +394,42 @@ function convertToOutline(model) {
 
 }
 
+let screen1;
+let screen2;
+let screen3;
+let screen4;
+
+loader.load('./assets/models/screen_1.glb', (gltf) => {
+    screen1 = gltf.scene;
+    convertToOutline(screen1);
+    screen1.scale.set(2, 2, 2);
+    screen1.position.y = -24;
+    scene.add(screen1);
+});
+
+loader.load('./assets/models/screen_2.glb', (gltf) => {
+    screen2 = gltf.scene;
+    convertToOutline(screen2);
+    screen2.scale.set(2, 2, 2);
+    screen2.position.y = -24;
+    scene.add(screen2);
+});
+
+loader.load('./assets/models/screen_3.glb', (gltf) => {
+    screen3 = gltf.scene;
+    convertToOutline(screen3);
+    screen3.scale.set(2, 2, 2);
+    screen3.position.y = -24;
+    scene.add(screen3);
+});
+
+loader.load('./assets/models/screen_4.glb', (gltf) => {
+    screen4 = gltf.scene;
+    convertToOutline(screen4);
+    screen4.scale.set(2, 2, 2);
+    screen4.position.y = -24;
+    scene.add(screen4);
+});
 
 let staticbase;
 let piano;
@@ -513,12 +543,75 @@ let archRotation = 0;
 let helixRotation = 0;
 let cogsnegRotation = 0;
 let cogsposRotation = 0;
+let screen1Rotation = 200;
+let screen2Rotation = 180;
+let screen3Rotation = 180;
+let screen4Rotation = 180;
 
 function animate() {
     requestAnimationFrame(animate);
 
     const scroll = window.scrollY;
 
+    if (screen1) {
+        screen1Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen1Rotation
+        ) * 0.05;
+
+        screen1.rotation.y = screen1Rotation;
+    }
+    
+    if (screen2) {
+        screen2Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen2Rotation
+        ) * 0.05;
+
+        screen2.rotation.y = screen2Rotation;
+    }
+
+    if (screen3) {
+        screen3Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen3Rotation
+        ) * 0.05;
+
+        screen3.rotation.y = screen3Rotation;
+    }
+
+    if (screen4) {
+        screen4Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen4Rotation
+        ) * 0.05;
+
+        screen4.rotation.y = screen4Rotation;
+    }
+
+    const screens = [
+        screen1,
+        screen2,
+        screen3,
+        screen4
+    ].filter(Boolean);
+
+    activeScreen = null;
+
+    screens.forEach(screen => {
+
+        const worldPos = new THREE.Vector3();
+
+        screen.getWorldPosition(worldPos);
+
+        worldPos.project(camera);
+
+        if (Math.abs(worldPos.x) < 0.08) {
+            activeScreen = screen;
+        }
+
+    });
+    
     if (piano) {
         const targetRotation = scroll * 0.002;
         pianoRotation += (targetRotation - pianoRotation) * 0.05;

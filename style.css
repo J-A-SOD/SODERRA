@@ -142,6 +142,16 @@ body {
     z-index: 15;
 }
 
+@media (max-width: 768px) {
+
+    #axis-top,
+    #axis-bottom {
+        width: 5vw;
+        height: 5vw;
+    }
+
+}
+
 #arch,
 #inter,
 #lens,
@@ -193,6 +203,16 @@ body {
     left: calc(50% + var(--name-offset));
     transform: translateY(-50%);
     top: 50%;
+}
+
+@media (max-width: 768px) {
+
+    #intro-text-left,
+    #intro-text-right {
+        top: 65%;
+        font-size: 3vh;
+    }
+
 }
 
 #intro-overlay {

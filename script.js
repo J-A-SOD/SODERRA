@@ -1,4 +1,7 @@
-console.log("script loaded");
+console.log("js file has initially loaded");
+console.log("version 3.1.1");
+console.log("project: SODERRA");
+console.log("property of JOHANNES SODERSTROM");
 history.scrollRestoration = "manual";
 
 // LOAD RESET
@@ -16,6 +19,8 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
 
 // INTRO ANIM
+
+
 
 const introarch = document.getElementById('arch');
 const introinter = document.getElementById('inter');
@@ -234,19 +239,11 @@ document.addEventListener("mousemove", (e) => {
 
 let minDistance = Infinity;
 
-const targets = [];
-
-// Always include intro targets
-if (!introHasPlayed) {
-    targets.push(
-        axisTop,
-        axisBottom
-    );
-} else {
-    targets.push(
-        ...document.querySelectorAll('.header-nav a')
-    );
-}
+const targets = [
+    axisTop,
+    axisBottom,
+    ...document.querySelectorAll('.header-nav a')
+];
 
 targets.forEach(target => {
 
@@ -272,10 +269,17 @@ targets.forEach(target => {
 
 });
 
-  const maxDist = 200;
-  let proximity = Math.max(0, 1 - minDistance / maxDist);
+    const maxDist = 200;
+    let proximity = Math.max(0, 1 - minDistance / maxDist);
 
-  targetScale = speedScale * (1 - proximity * 0.8);
+    targetScale = speedScale * (1 - proximity * 0.9);
+
+    if (proximity > 0.5) {
+        cursor.classList.add('active');
+    } else {
+        cursor.classList.remove('active');
+}
+
 });
 
 function animateCursor() {
@@ -294,8 +298,6 @@ animateCursor();
 // 
 
 const container = document.getElementById('model-container');
-
-console.log(container);
 
 // ANIMATED HUB
 
@@ -552,6 +554,18 @@ function animate() {
     requestAnimationFrame(animate);
 
     const scroll = window.scrollY;
+
+    const nameOffset =
+        Math.min(
+            window.innerWidth * 0.03,
+            scroll * 0.05
+        );
+
+    introTextLeft.style.transform =
+        `translate(calc(-100% - ${nameOffset}px), -50%)`;
+
+    introTextRight.style.transform =
+        `translate(${nameOffset}px, -50%)`;
 
     if (screen1) {
         screen1Rotation += (

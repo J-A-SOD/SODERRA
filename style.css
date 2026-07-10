@@ -22,7 +22,7 @@ body {
     overflow-x: hidden;
     font-family: 'Satoshi-Variable', sans-serif;
     cursor: none;
-    background-color: #ffffff;
+    background-color: #dddcce;
     opacity: 1;
     transition: opacity 0.5s ease;
     animation: pageIn 0.4s ease;
@@ -71,7 +71,7 @@ body {
     position: relative;
     inset: 0;
 
-    background: #ffffff;
+    background: #dddcce;
 
     z-index: 10;
 
@@ -87,7 +87,7 @@ body {
     width: 1vw;
     height: 1vw;
 
-    background: #4d3e53;
+    background: #c95656;
     border-radius: 20%;
 
     position: absolute;
@@ -96,6 +96,7 @@ body {
 }
 
 #axis-line {
+    pointer-events: none;
     width: 0.1vw;
     height: 0;
     z-index: 14;
@@ -150,7 +151,7 @@ body {
     width: 35vh;
 
     transition:
-        transform 1s ease,
+        transform 0.4s bezier(0.215, 0.610, 0.355, 1),
         opacity 0.2s ease;
     z-index: 11;
 
@@ -262,6 +263,18 @@ body.intro-lock {
   -webkit-backdrop-filter: blur(5px);
   background: rgba(77, 56, 56, 0.062);
   border: 2px solid hsla(0, 7%, 38%, 0.13);
+}
+
+.cursor-glass {
+    transition:
+        border-color 1s ease,
+        transform 0.1s ease;
+}
+
+.cursor-glass.active {
+    border-color: #c95656;
+    border-width: 12px;
+    border-style: solid;
 }
 
 /* HEADER FIXED NAVIGATION -------------------------------------------------------- */

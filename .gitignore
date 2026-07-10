@@ -1,0 +1,4 @@
+node_modules
+dist
+.vite
+git rm -r --cached node_modules

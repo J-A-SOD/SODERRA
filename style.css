@@ -478,6 +478,11 @@ body.intro-lock {
     pointer-events: all;
 }
 
+#category-model-container {
+    width: 100vw;
+    height: 100vh;
+}
+
 /* TYPOGRAPHY ---------------------------------------------------------------------- */
 
 h1,

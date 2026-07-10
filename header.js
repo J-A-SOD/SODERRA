@@ -134,3 +134,120 @@ function animateCursor() {
 }
 
 animateCursor();
+
+// CATEGORY SCENES
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const container = document.getElementById('category-model-container');
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
+camera.position.set(0, 0, 40);
+
+const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+});
+
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+renderer.setPixelRatio(window.devicePixelRatio);
+
+container.appendChild(renderer.domElement);
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+directionalLight.position.set(10, 10, 10);
+scene.add(directionalLight);
+
+const loader = new GLTFLoader();
+
+const gearGroup = new THREE.Group();
+scene.add(gearGroup);
+
+gearGroup.rotation.x = Math.PI / 2;
+
+let gears1;
+let gears2;
+
+function positionGearGroup() {
+
+    const distance = camera.position.z;
+
+    const vFOV =
+        THREE.MathUtils.degToRad(camera.fov);
+
+    const visibleHeight =
+        2 * Math.tan(vFOV / 2) * distance;
+
+    const visibleWidth =
+        visibleHeight * camera.aspect;
+
+    // center of object sits on left-middle area
+    gearGroup.position.set(
+        -visibleWidth * 0.5,
+        0,
+        0
+    );
+
+}
+
+loader.load('./assets/models/gears_01.glb', (gltf) => {
+
+    gears1 = gltf.scene;
+
+    gears1.scale.set(10, 10, 10);
+
+    gearGroup.add(gears1);
+
+    renderer.render(scene, camera);
+
+});
+
+loader.load('./assets/models/gears_02.glb', (gltf) => {
+
+    gears2 = gltf.scene;
+
+    gears2.scale.set(10, 10, 10);
+
+    gearGroup.add(gears2);
+
+    renderer.render(scene, camera);
+
+});
+
+positionGearGroup();
+
+renderer.render(scene, camera);
+
+window.addEventListener('resize', () => {
+
+    camera.aspect =
+        window.innerWidth /
+        window.innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    positionGearGroup();
+
+    renderer.render(scene, camera);
+
+});

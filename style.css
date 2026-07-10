@@ -380,6 +380,29 @@ body.intro-lock {
 
     z-index: 10;
 }
+
+.scene-3::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 8vh;
+
+    background: #000000;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 0%
+    );
+
+    z-index: 10;
+}
 .scene-2 {
     background: #333;
 }
@@ -416,6 +439,43 @@ body.intro-lock {
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+/* CATEGORY ---------------------------------------------- */
+
+.category-panel {
+  position: fixed;
+
+  top: 50%;
+  left: 25vw;
+  transform: translateY(-50%);
+  width: 50vw;
+  height: 30vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(104, 76, 76, 0.5);
+  border: 3px solid rgba(190, 190, 190, 0.349);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  color: white;
+  text-decoration: none;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 50;
+}
+
+.category-panel.visible {
+    opacity: 1;
+    z-index: 51;
+    pointer-events: all;
 }
 
 /* TYPOGRAPHY ---------------------------------------------------------------------- */

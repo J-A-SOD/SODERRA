@@ -324,10 +324,13 @@ document.addEventListener("mousemove", (e) => {
 
 let minDistance = Infinity;
 
+const visiblePanels = [...document.querySelectorAll('.category-panel.visible')];
+
 const targets = [
     axisTop,
     axisBottom,
-    ...document.querySelectorAll('.header-nav a')
+    ...document.querySelectorAll('.header-nav a'),
+    ...visiblePanels
 ];
 
 targets.forEach(target => {
@@ -405,7 +408,7 @@ let activeScreen = null;
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-const screenOffset = -1.4; // tweak this
+const screenOffset = 3.3; // tweak this
 
 
 
@@ -484,7 +487,7 @@ function convertToOutline(model) {
             outline.scale.copy(child.scale);
             
             child.material = new THREE.MeshBasicMaterial({
-                color: '#b8b5ab',
+                color: '#d4d4d4',
             });
 
             child.parent.add(outline);
@@ -678,7 +681,7 @@ function animate() {
     
     if (screen2) {
         screen2Rotation += (
-            (scroll * -0.0027 + screenOffset)
+            (scroll * -0.003 + screenOffset)
             - screen2Rotation
         ) * 0.05;
 
@@ -687,7 +690,7 @@ function animate() {
 
     if (screen3) {
         screen3Rotation += (
-            (scroll * -0.0027 + screenOffset)
+            (scroll * -0.0033 + screenOffset)
             - screen3Rotation
         ) * 0.05;
 
@@ -696,7 +699,7 @@ function animate() {
 
     if (screen4) {
         screen4Rotation += (
-            (scroll * -0.0027 + screenOffset)
+            (scroll * -0.0034 + screenOffset)
             - screen4Rotation
         ) * 0.05;
 
@@ -807,3 +810,85 @@ document.querySelectorAll('a').forEach(link => {
     });
 
 });
+
+// PANELS
+
+const panel = document.getElementById("panel-inter");
+
+window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+
+    if (y >= 1150 && y < 1250) {
+        panel.textContent = "INTERACTIVE MEDIA";
+        panel.href = "proj-interactive.html";
+        panel.classList.add("visible");
+        archSfx.play();
+    }
+    else if (y >= 1550 && y < 1650) {
+        panel.textContent = "ARCH";
+        panel.href = "proj-arch.html";
+        panel.classList.add("visible");
+        interSfx.play();
+    }
+    else if (y >= 1870 && y < 1970) {
+        panel.textContent = "PHOTOS";
+        panel.href = "proj-photo.html";
+        panel.classList.add("visible");
+        pianoSfx.play();
+    }
+    else if (y >= 2270 && y < 2370) {
+        panel.textContent = "MUSIC";
+        panel.href = "proj-music.html";
+        panel.classList.add("visible");
+        lensSfx.play();
+    }
+    else {
+        panel.classList.remove("visible");
+    }
+});
+
+// DEBUG
+
+// window.addEventListener("scroll", () => {
+//     console.log(window.scrollY);
+// });
+
+document.getElementById("panel-inter").addEventListener("click", () => {
+    console.log("clicked");
+});
+
+
+// SNAPPING SCROLL
+
+const snapPoints = [1200, 1600, 1920, 2320];
+const snapRange = 250;      // distance at which attraction starts
+const snapStrength = 0.02;  // higher = stronger pull
+
+function magneticScroll() {
+    const y = window.scrollY;
+
+    let closest = snapPoints[0];
+    let closestDistance = Math.abs(y - closest);
+
+    snapPoints.forEach(point => {
+        const distance = Math.abs(y - point);
+
+        if (distance < closestDistance) {
+            closest = point;
+            closestDistance = distance;
+        }
+    });
+
+    if (closestDistance < snapRange) {
+        const target = y + (closest - y) * snapStrength;
+
+        window.scrollTo({
+            top: target,
+            behavior: "instant"
+        });
+    }
+
+    requestAnimationFrame(magneticScroll);
+}
+
+magneticScroll();

@@ -23,6 +23,52 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
 
 // INTRO ANIM
+const LtextSfx =
+    new Audio('./assets/sounds/sfx_textl.mp3');
+
+LtextSfx.volume = 0.5;
+LtextSfx.preload = 'auto';
+
+const RtextSfx =
+    new Audio('./assets/sounds/sfx_textr.mp3');
+
+RtextSfx.volume = 0.5;
+RtextSfx.preload = 'auto';
+
+const archSfx =
+    new Audio('./assets/sounds/sfx_b1.mp3');
+
+const pianoSfx =
+    new Audio('./assets/sounds/sfx_b2.mp3');
+
+const lensSfx =
+    new Audio('./assets/sounds/sfx_b3.mp3');
+
+const interSfx =
+    new Audio('./assets/sounds/sfx_b4.mp3');
+
+archSfx.volume = 0.5;
+pianoSfx.volume = 0.5;
+lensSfx.volume = 0.5;
+interSfx.volume = 0.5;
+
+const assembleSfx =
+    new Audio('./assets/sounds/sfx_load.mp3');
+
+assembleSfx.volume = 0.5;
+assembleSfx.preload = 'auto';
+
+const clickSfx =
+    new Audio('./assets/sounds/sfx_click.mp3');
+
+clickSfx.volume = 0.5;
+clickSfx.preload = 'auto';
+
+const hoverSfx =
+    new Audio('./assets/sounds/sfx_hover.mp3');
+
+hoverSfx.volume = 0.3;
+hoverSfx.preload = 'auto';
 
 const introarch = document.getElementById('arch');
 const introinter = document.getElementById('inter');
@@ -92,6 +138,9 @@ function startIntro() {
 
     if (introHasPlayed) return;
 
+    clickSfx.currentTime = 0;
+    clickSfx.play();    
+
     const topLabel = document.getElementById('top-label');
     const bottomLabel = document.getElementById('bottom-label');
 
@@ -111,18 +160,26 @@ function startIntro() {
 
         setTimeout(() => {
             introarch.style.opacity = 1;
+            archSfx.currentTime = 0;
+            archSfx.play();
         }, duration);
 
         setTimeout(() => {
             intropiano.style.opacity = 1;
+            pianoSfx.currentTime = 0;
+            pianoSfx.play();
         }, duration + 150);
 
         setTimeout(() => {
             introlens.style.opacity = 1;
+            lensSfx.currentTime = 0;
+            lensSfx.play();
         }, duration + 300);
 
         setTimeout(() => {
             introinter.style.opacity = 1;
+            interSfx.currentTime = 0;
+            interSfx.play();
         }, duration + 450);
 
     }, duration);
@@ -130,13 +187,27 @@ function startIntro() {
     setTimeout(() => {
 
         introTextLeft.style.opacity = 1;
-        introTextRight.style.opacity = 1;
+
+        LtextSfx.currentTime = 0;
+        LtextSfx.play();
 
     }, duration + 900);
 
     setTimeout(() => {
 
+        introTextRight.style.opacity = 1;
+
+        RtextSfx.currentTime = 0;
+        RtextSfx.play();
+
+    }, duration + 1000);
+
+    setTimeout(() => {
+
         setAssemblyState(true);
+
+        assembleSfx.currentTime = 0;
+        assembleSfx.play();
 
     }, duration + 3000);
 
@@ -188,10 +259,12 @@ axisTop.addEventListener('click', (e) => {
         return;
     }
 
+    assembleSfx.currentTime = 0;
+    assembleSfx.play();
+
     setAssemblyState(!assembled);
 
 });
-
 
 axisBottom.addEventListener('click', (e) => {
 
@@ -201,6 +274,9 @@ axisBottom.addEventListener('click', (e) => {
         startIntro();
         return;
     }
+    
+    assembleSfx.currentTime = 0;
+    assembleSfx.play();
 
     setAssemblyState(!assembled);
 
@@ -227,7 +303,7 @@ let velocity = 0;
 
 let currentScale = 1;
 let targetScale = 1;
-
+let hoverActive = false;
 
 document.addEventListener("mousemove", (e) => {
 
@@ -284,9 +360,24 @@ targets.forEach(target => {
     targetScale = speedScale * (1 - proximity * 0.9);
 
     if (proximity > 0.5) {
+
         cursor.classList.add('active');
+
+        if (!hoverActive) {
+
+            hoverActive = true;
+
+            hoverSfx.currentTime = 0;
+            hoverSfx.play();
+
+        }
+
     } else {
+
         cursor.classList.remove('active');
+
+        hoverActive = false;
+
 }
 
 });

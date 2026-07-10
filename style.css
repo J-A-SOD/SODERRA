@@ -375,6 +375,14 @@ body.intro-lock {
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+
+    .scene-3 {
+        min-height: 150vh;
+    }
+
+}
+
 .scene-4 {
     background: #777;
 }

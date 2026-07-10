@@ -88,7 +88,7 @@ introlens.style.transform =
 introinter.style.transform =
     `translateY(${y}px)`;
 
-introOverlay.addEventListener('click', () => {
+function startIntro() {
 
     if (introHasPlayed) return;
 
@@ -175,29 +175,36 @@ introOverlay.addEventListener('click', () => {
         }
 
     }, 20);
+       
 
-});
+}
 
 axisTop.addEventListener('click', (e) => {
 
     e.stopPropagation();
 
-    if (!introHasPlayed) return;
+    if (!introHasPlayed) {
+        startIntro();
+        return;
+    }
 
     setAssemblyState(!assembled);
 
 });
+
 
 axisBottom.addEventListener('click', (e) => {
 
     e.stopPropagation();
 
-    if (!introHasPlayed) return;
+    if (!introHasPlayed) {
+        startIntro();
+        return;
+    }
 
     setAssemblyState(!assembled);
 
 });
-
 // Fade in ------------------------
 
 window.addEventListener("load", () => {

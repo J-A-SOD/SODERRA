@@ -334,9 +334,32 @@ body.intro-lock {
 }
 
 .scene-1 {
+    position: relative;
     background: #111;
 }
 
+.scene-1::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 8vh;
+
+    background: #dddcce;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        0 100%,
+        0 100%
+    );
+
+    z-index: 10;
+}
 .scene-2 {
     background: #333;
 }
@@ -344,15 +367,6 @@ body.intro-lock {
     position: relative;
 }
 
-.scene-1 {
-    clip-path: polygon(
-        0 8vh,
-        100% 0,
-        100% 100%,
-        0 100%
-       
-    );
-}
 .scene-3 {
     background: #ffffff;
     min-height: 380vh;

@@ -1,16 +1,39 @@
-console.log("script loaded");
+console.log("js file has initially loaded");
+console.log("version 3.1.1");
+console.log("project: SODERRA");
+console.log("property of JOHANNES SODERSTROM");
+history.scrollRestoration = "manual";
+
+// LOAD RESET
+
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
 
 // 3D MODEL FOR SCENE 3 of LANDING PAGE
 
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
+import { GLTFLoader } from "https://unpkg.com/three@0.179.1/examples/jsm/loaders/GLTFLoader.js";
+
+import { EffectComposer } from "https://unpkg.com/three@0.179.1/examples/jsm/postprocessing/EffectComposer.js";
+
+import { RenderPass } from "https://unpkg.com/three@0.179.1/examples/jsm/postprocessing/RenderPass.js";
+
+import { OutlinePass } from "https://unpkg.com/three@0.179.1/examples/jsm/postprocessing/OutlinePass.js";
 
 // INTRO ANIM
 
+const introarch = document.getElementById('arch');
+const introinter = document.getElementById('inter');
+const introlens = document.getElementById('lens');
+const intropiano = document.getElementById('piano');
+
+const introTextLeft =
+    document.getElementById('intro-text-left');
+
+const introTextRight =
+    document.getElementById('intro-text-right');
 
 const introOverlay = document.getElementById('intro-overlay');
 
@@ -18,58 +41,162 @@ const axisTop = document.getElementById('axis-top');
 const axisBottom = document.getElementById('axis-bottom');
 const axisLine = document.getElementById('axis-line');
 
+const y = window.innerHeight * 0.25;
 
+let assembled = false;
 
+let introHasPlayed = false;
 
-introOverlay.addEventListener('click', () => {
-        
-    const topLabel = document.getElementById('top-label');
-    const bottomLabel = document.getElementById('bottom-label');
-    const target = 120;
-    const duration = 1200;
+function setAssemblyState(isAssembled) {
 
-    axisTop.style.transform =
-        'translateY(-240px)';
+    if (isAssembled) {
 
-    axisBottom.style.transform =
-        'translateY(240px)';
+        introarch.style.transform = 'translateY(0)';
+        introinter.style.transform = 'translateY(0)';
+        introlens.style.transform = 'translateY(0)';
+        intropiano.style.transform = 'translateY(0)';
 
-    axisLine.style.height = '480px';
+    } else {
 
-    const start = performance.now();
+        introarch.style.transform =
+            `translateY(-${y}px)`;
 
-    function update(time) {
+        intropiano.style.transform =
+            `translateY(-${y * 0.35}px)`;
 
-        const progress = Math.min(
-            (time - start) / duration,
-            1
-        );
+        introlens.style.transform =
+            `translateY(${y * 0.35}px)`;
 
-        
-        const value = target * progress;
-
-        console.log(value);
-
-        
-        topLabel.textContent =
-            value.toFixed(3);
-
-        bottomLabel.textContent =
-            value.toFixed(3);
-
-        console.log(topLabel.textContent);
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
+        introinter.style.transform =
+            `translateY(${y}px)`;
 
     }
 
-    requestAnimationFrame(update);
+    assembled = isAssembled;
+}
+
+document.body.classList.add('intro-lock');
+introarch.style.transform =
+    `translateY(-${y}px)`;
+
+intropiano.style.transform =
+    `translateY(-${y * 0.35}px)`;
+
+introlens.style.transform =
+    `translateY(${y * 0.35}px)`;
+
+introinter.style.transform =
+    `translateY(${y}px)`;
+
+introOverlay.addEventListener('click', () => {
+
+    if (introHasPlayed) return;
+
+    const topLabel = document.getElementById('top-label');
+    const bottomLabel = document.getElementById('bottom-label');
+
+    const target = window.innerHeight * 0.35;
+    const duration = 1200;
+
+    axisTop.style.transform =
+        `translateY(-${target}px)`;
+
+    axisBottom.style.transform =
+        `translateY(${target}px)`;
+
+    axisLine.style.height =
+        `${target * 2}px`;
+
+    setTimeout(() => {
+
+        setTimeout(() => {
+            introarch.style.opacity = 1;
+        }, duration);
+
+        setTimeout(() => {
+            intropiano.style.opacity = 1;
+        }, duration + 150);
+
+        setTimeout(() => {
+            introlens.style.opacity = 1;
+        }, duration + 300);
+
+        setTimeout(() => {
+            introinter.style.opacity = 1;
+        }, duration + 450);
+
+    }, duration);
+
+    setTimeout(() => {
+
+        introTextLeft.style.opacity = 1;
+        introTextRight.style.opacity = 1;
+
+    }, duration + 900);
+
+    setTimeout(() => {
+
+        setAssemblyState(true);
+
+    }, duration + 3000);
+
+    setTimeout(() => {
+        document
+            .querySelectorAll('.corner-text')
+            .forEach(el => {
+                el.style.opacity = 1;
+            });
+    }, duration + 600);
+    
+    let current = 0;
+
+    setTimeout(() => {
+
+        document.body.classList.remove('intro-lock');
+
+        introHasPlayed = true;
+
+    }, duration + 3500);
+
+    const interval = setInterval(() => {
+
+        current += target / 60;
+
+        topLabel.innerText = current.toFixed(3);
+        bottomLabel.innerText = current.toFixed(3);
+
+        if (current >= target) {
+
+            clearInterval(interval);
+
+            topLabel.innerText = target.toFixed(3);
+            bottomLabel.innerText = target.toFixed(3);
+
+        }
+
+    }, 20);
 
 });
 
+axisTop.addEventListener('click', (e) => {
 
+    e.stopPropagation();
+
+    if (!introHasPlayed) return;
+
+    setAssemblyState(!assembled);
+
+});
+
+axisBottom.addEventListener('click', (e) => {
+
+    e.stopPropagation();
+
+    if (!introHasPlayed) return;
+
+    setAssemblyState(!assembled);
+
+});
 
 // Fade in ------------------------
 
@@ -84,8 +211,8 @@ window.addEventListener("load", () => {
 });
 
 // CURSOR --------------------------------------------------
+
 const cursor = document.querySelector(".cursor-glass");
-const links = document.querySelectorAll(".header-nav a");
 
 let lastX = 0;
 let lastY = 0;
@@ -112,23 +239,49 @@ document.addEventListener("mousemove", (e) => {
 
   let speedScale = Math.max(0.5, 1 - velocity / 80);
 
-  let minDistance = Infinity;
+let minDistance = Infinity;
 
-  links.forEach(link => {
-    const rect = link.getBoundingClientRect();
+const targets = [
+    axisTop,
+    axisBottom,
+    ...document.querySelectorAll('.header-nav a')
+];
 
-    const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
-    const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
+targets.forEach(target => {
+
+    if (!target) return;
+
+    const rect = target.getBoundingClientRect();
+
+    const dx = Math.max(
+        rect.left - e.clientX,
+        0,
+        e.clientX - rect.right
+    );
+
+    const dy = Math.max(
+        rect.top - e.clientY,
+        0,
+        e.clientY - rect.bottom
+    );
 
     const distance = Math.sqrt(dx * dx + dy * dy);
 
     minDistance = Math.min(minDistance, distance);
-  });
 
-  const maxDist = 200;
-  let proximity = Math.max(0, 1 - minDistance / maxDist);
+});
 
-  targetScale = speedScale * (1 - proximity * 0.8);
+    const maxDist = 200;
+    let proximity = Math.max(0, 1 - minDistance / maxDist);
+
+    targetScale = speedScale * (1 - proximity * 0.9);
+
+    if (proximity > 0.5) {
+        cursor.classList.add('active');
+    } else {
+        cursor.classList.remove('active');
+}
+
 });
 
 function animateCursor() {
@@ -146,10 +299,17 @@ animateCursor();
 
 // 
 
-
 const container = document.getElementById('model-container');
 
-console.log(container);
+// ANIMATED HUB
+
+let activeScreen = null;
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+const screenOffset = -1.4; // tweak this
+
+
 
 const scene = new THREE.Scene();
 
@@ -238,6 +398,42 @@ function convertToOutline(model) {
 
 }
 
+let screen1;
+let screen2;
+let screen3;
+let screen4;
+
+loader.load('./assets/models/screen_1.glb', (gltf) => {
+    screen1 = gltf.scene;
+    convertToOutline(screen1);
+    screen1.scale.set(2, 2, 2);
+    screen1.position.y = -24;
+    scene.add(screen1);
+});
+
+loader.load('./assets/models/screen_2.glb', (gltf) => {
+    screen2 = gltf.scene;
+    convertToOutline(screen2);
+    screen2.scale.set(2, 2, 2);
+    screen2.position.y = -24;
+    scene.add(screen2);
+});
+
+loader.load('./assets/models/screen_3.glb', (gltf) => {
+    screen3 = gltf.scene;
+    convertToOutline(screen3);
+    screen3.scale.set(2, 2, 2);
+    screen3.position.y = -24;
+    scene.add(screen3);
+});
+
+loader.load('./assets/models/screen_4.glb', (gltf) => {
+    screen4 = gltf.scene;
+    convertToOutline(screen4);
+    screen4.scale.set(2, 2, 2);
+    screen4.position.y = -24;
+    scene.add(screen4);
+});
 
 let staticbase;
 let piano;
@@ -252,6 +448,7 @@ let cogsneg;
 let cogspos;
 
 // loading the models //
+
 loader.load('./assets/models/staticbase.glb', (gltf) => {
     staticbase = gltf.scene;
     convertToOutline(staticbase);
@@ -350,12 +547,87 @@ let archRotation = 0;
 let helixRotation = 0;
 let cogsnegRotation = 0;
 let cogsposRotation = 0;
+let screen1Rotation = 200;
+let screen2Rotation = 180;
+let screen3Rotation = 180;
+let screen4Rotation = 180;
 
 function animate() {
     requestAnimationFrame(animate);
 
     const scroll = window.scrollY;
 
+    const nameOffset =
+        Math.min(
+            window.innerWidth * 0.03,
+            scroll * 0.05
+        );
+
+    introTextLeft.style.transform =
+        `translate(calc(-100% - ${nameOffset}px), -50%)`;
+
+    introTextRight.style.transform =
+        `translate(${nameOffset}px, -50%)`;
+
+    if (screen1) {
+        screen1Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen1Rotation
+        ) * 0.05;
+
+        screen1.rotation.y = screen1Rotation;
+    }
+    
+    if (screen2) {
+        screen2Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen2Rotation
+        ) * 0.05;
+
+        screen2.rotation.y = screen2Rotation;
+    }
+
+    if (screen3) {
+        screen3Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen3Rotation
+        ) * 0.05;
+
+        screen3.rotation.y = screen3Rotation;
+    }
+
+    if (screen4) {
+        screen4Rotation += (
+            (scroll * -0.0027 + screenOffset)
+            - screen4Rotation
+        ) * 0.05;
+
+        screen4.rotation.y = screen4Rotation;
+    }
+
+    const screens = [
+        screen1,
+        screen2,
+        screen3,
+        screen4
+    ].filter(Boolean);
+
+    activeScreen = null;
+
+    screens.forEach(screen => {
+
+        const worldPos = new THREE.Vector3();
+
+        screen.getWorldPosition(worldPos);
+
+        worldPos.project(camera);
+
+        if (Math.abs(worldPos.x) < 0.08) {
+            activeScreen = screen;
+        }
+
+    });
+    
     if (piano) {
         const targetRotation = scroll * 0.002;
         pianoRotation += (targetRotation - pianoRotation) * 0.05;
@@ -408,7 +680,32 @@ function animate() {
     }
 
     camera.lookAt(0, camera.position.y, 0);
+
     composer.render();
 }
 
 animate();
+
+// PAGE TRANSITIONS ----------------------------------------------------------------- //
+
+document.querySelectorAll('a').forEach(link => {
+
+    link.addEventListener('click', (e) => {
+
+        const href = link.getAttribute('href');
+
+        if (!href || href.startsWith('#')) {
+            return;
+        }
+
+        e.preventDefault();
+
+        document.body.classList.add('page-transition');
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 400);
+
+    });
+
+});

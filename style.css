@@ -404,7 +404,8 @@ body.intro-lock {
     z-index: 10;
 }
 .scene-2 {
-    background: #333;
+    background: #dddcce;
+    height: 1000vh;
 }
 .scene-2 {
     position: relative;
@@ -512,4 +513,21 @@ p {
 
 html {
     scrollbar-color: #424242 transparent;
+}
+
+.cat_img {
+    position: fixed;
+
+    left: 0;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 40vw;
+    height: auto;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 1;
 }

@@ -1,4 +1,15 @@
-console.log("subpage.js loaded");
+console.log("js file has initially loaded");
+console.log("version 3.1.1");
+console.log("project: SODERRA");
+console.log("property of JOHANNES SODERSTROM");
+history.scrollRestoration = "manual";
+
+// LOAD RESET
+
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
+
 
 // PAGE FADE IN
 
@@ -45,8 +56,13 @@ document.querySelectorAll("a").forEach(link => {
 
 // CURSOR
 
+const hoverSfx =
+    new Audio('./assets/sounds/sfx_hover.mp3');
+
+hoverSfx.volume = 0.3;
+hoverSfx.preload = 'auto';
+
 const cursor = document.querySelector(".cursor-glass");
-const links = document.querySelectorAll(".header-nav a");
 
 let lastX = 0;
 let lastY = 0;
@@ -54,200 +70,193 @@ let velocity = 0;
 
 let currentScale = 1;
 let targetScale = 1;
+let hoverActive = false;
 
 document.addEventListener("mousemove", (e) => {
 
-    if (!cursor) return;
+  if (!cursor) return;
 
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
 
-    const dx = e.clientX - lastX;
-    const dy = e.clientY - lastY;
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
 
-    velocity = Math.sqrt(dx * dx + dy * dy);
+  velocity = Math.sqrt(dx * dx + dy * dy);
 
-    lastX = e.clientX;
-    lastY = e.clientY;
+  lastX = e.clientX;
+  lastY = e.clientY;
 
-    let speedScale = Math.max(
-        0.5,
-        1 - velocity / 80
+  let speedScale = Math.max(0.5, 1 - velocity / 80);
+
+let minDistance = Infinity;
+
+const visiblePanels = [...document.querySelectorAll('.category-panel.visible')];
+
+const targets = [
+    ...document.querySelectorAll('.header-nav a'),
+    ...visiblePanels
+];
+
+targets.forEach(target => {
+
+    if (!target) return;
+
+    const rect = target.getBoundingClientRect();
+
+    const dx = Math.max(
+        rect.left - e.clientX,
+        0,
+        e.clientX - rect.right
     );
 
-    let minDistance = Infinity;
+    const dy = Math.max(
+        rect.top - e.clientY,
+        0,
+        e.clientY - rect.bottom
+    );
 
-    links.forEach(link => {
+    const distance = Math.sqrt(dx * dx + dy * dy);
 
-        const rect = link.getBoundingClientRect();
+    minDistance = Math.min(minDistance, distance);
 
-        const dx = Math.max(
-            rect.left - e.clientX,
-            0,
-            e.clientX - rect.right
-        );
-
-        const dy = Math.max(
-            rect.top - e.clientY,
-            0,
-            e.clientY - rect.bottom
-        );
-
-        const distance = Math.sqrt(
-            dx * dx + dy * dy
-        );
-
-        minDistance = Math.min(
-            minDistance,
-            distance
-        );
-
-    });
+});
 
     const maxDist = 200;
+    let proximity = Math.max(0, 1 - minDistance / maxDist);
 
-    const proximity = Math.max(
-        0,
-        1 - minDistance / maxDist
-    );
+    targetScale = speedScale * (1 - proximity * 0.9);
 
-    targetScale =
-        speedScale *
-        (1 - proximity * 0.8);
+    if (proximity > 0.5) {
+
+        cursor.classList.add('active');
+
+        if (!hoverActive) {
+
+            hoverActive = true;
+
+            hoverSfx.currentTime = 0;
+            hoverSfx.play();
+
+        }
+
+    } else {
+
+        cursor.classList.remove('active');
+
+        hoverActive = false;
+
+}
 
 });
 
 function animateCursor() {
 
-    if (!cursor) return;
+  if (!cursor) return;
 
-    currentScale +=
-        (targetScale - currentScale) * 0.06;
+  currentScale += (targetScale - currentScale) * 0.06;
 
-    cursor.style.transform =
-        `translate(-50%, -50%) scale(${currentScale})`;
+  cursor.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
 
-    requestAnimationFrame(
-        animateCursor
-    );
-
+  requestAnimationFrame(animateCursor);
 }
 
 animateCursor();
 
+
 // CATEGORY SCENES
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-const container = document.getElementById('category-model-container');
+const gear1 = document.querySelector('.gear1');
+const gear2 = document.querySelector('.gear2');
+const gear3 = document.querySelector('.gear3');
+const gear4 = document.querySelector('.gear4');
 
-const scene = new THREE.Scene();
+window.addEventListener('scroll', () => {
 
-const camera = new THREE.PerspectiveCamera(
-    45,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
+    const scroll = window.scrollY;
 
-camera.position.set(0, 0, 40);
+    if (gear1) {
+        gear1.style.transform =
+            `translate(-50%, -50%) rotate(${scroll * 0.05}deg)`;
+    }
 
-const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true
+    if (gear2) {
+        gear2.style.transform =
+            `translate(-50%, -50%) rotate(${-scroll * 0.2}deg)`;
+    }
+
+    if (gear3) {
+        gear3.style.transform =
+            `translate(-50%, -50%) rotate(${scroll * 0.01}deg)`;
+    }
+
+    if (gear4) {
+        gear4.style.transform =
+            `translate(-50%, -50%) rotate(${-scroll * 0.1}deg)`;
+    }
+
 });
 
-renderer.setSize(
-    window.innerWidth,
-    window.innerHeight
+const snapPoints = Array.from(
+    { length: 20 },
+    (_, i) => i * 450
 );
 
-renderer.setPixelRatio(window.devicePixelRatio);
+const gear =
+    new Audio('./assets/sounds/sfx_textl.mp3');
 
-container.appendChild(renderer.domElement);
+gear.volume = 1;
+gear.preload = 'auto';
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-scene.add(ambientLight);
+const snapRange = 150;
+const snapStrength = 0.2;
+let lastSnapIndex = 0;
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
-directionalLight.position.set(10, 10, 10);
-scene.add(directionalLight);
+function magneticScroll() {
 
-const loader = new GLTFLoader();
+    const y = window.scrollY;
 
-const gearGroup = new THREE.Group();
-scene.add(gearGroup);
+    const currentSnapIndex = Math.round(y / 450);
 
-gearGroup.rotation.x = Math.PI / 2;
+    if (currentSnapIndex !== lastSnapIndex) {
 
-let gears1;
-let gears2;
+        gear.currentTime = 0;
+        gear.play();
 
-function positionGearGroup() {
+        lastSnapIndex = currentSnapIndex;
+    }
 
-    const distance = camera.position.z;
+    let closest = snapPoints[0];
+    let closestDistance = Math.abs(y - closest);
 
-    const vFOV =
-        THREE.MathUtils.degToRad(camera.fov);
+    snapPoints.forEach(point => {
 
-    const visibleHeight =
-        2 * Math.tan(vFOV / 2) * distance;
+        const distance = Math.abs(y - point);
 
-    const visibleWidth =
-        visibleHeight * camera.aspect;
+        if (distance < closestDistance) {
+            closest = point;
+            closestDistance = distance;
+        }
 
-    // center of object sits on left-middle area
-    gearGroup.position.set(
-        -visibleWidth * 0.5,
-        0,
-        0
-    );
+    });
+
+    if (closestDistance < snapRange) {
+
+        const target =
+            y + (closest - y) * snapStrength;
+
+        window.scrollTo({
+            top: target,
+            behavior: 'instant'
+        });
+
+    }
+
+    requestAnimationFrame(magneticScroll);
 
 }
 
-loader.load('./assets/models/gears_01.glb', (gltf) => {
 
-    gears1 = gltf.scene;
 
-    gears1.scale.set(10, 10, 10);
+magneticScroll();
 
-    gearGroup.add(gears1);
-
-    renderer.render(scene, camera);
-
-});
-
-loader.load('./assets/models/gears_02.glb', (gltf) => {
-
-    gears2 = gltf.scene;
-
-    gears2.scale.set(10, 10, 10);
-
-    gearGroup.add(gears2);
-
-    renderer.render(scene, camera);
-
-});
-
-positionGearGroup();
-
-renderer.render(scene, camera);
-
-window.addEventListener('resize', () => {
-
-    camera.aspect =
-        window.innerWidth /
-        window.innerHeight;
-
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(
-        window.innerWidth,
-        window.innerHeight
-    );
-
-    positionGearGroup();
-
-    renderer.render(scene, camera);
-
-});

@@ -12,15 +12,15 @@ window.addEventListener("load", () => {
 
 // 3D MODEL FOR SCENE 3 of LANDING PAGE
 
-import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import * as THREE from 'three';
 
-import { GLTFLoader } from "https://unpkg.com/three@0.179.1/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-import { EffectComposer } from "https://unpkg.com/three@0.179.1/examples/jsm/postprocessing/EffectComposer.js";
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 
-import { RenderPass } from "https://unpkg.com/three@0.179.1/examples/jsm/postprocessing/RenderPass.js";
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 
-import { OutlinePass } from "https://unpkg.com/three@0.179.1/examples/jsm/postprocessing/OutlinePass.js";
+import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
 
 // INTRO ANIM
 

@@ -23,6 +23,45 @@ body {
     font-family: 'Satoshi-Variable', sans-serif;
     cursor: none;
     background-color: #333;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    animation: pageIn 0.4s ease;
+}
+
+/* PAGE TRANSITIONS ----------------------------------------------------------------- */
+
+body.page-transition {
+    opacity: 0;
+}
+
+body {
+    animation: pageIn 0.4s ease;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* GRAIN EFFECT ------------------------------------------------------------------------------ */
+
+#grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/images/grain.jpg');
+    opacity: 0.15;
+    mix-blend-mode: multiply;
+    background-size: cover;
+    z-index: 90;
+    pointer-events: none;
 }
 
 /* INTRO ANIMATION ------------------------------------------------------------------- */
@@ -165,16 +204,16 @@ body.intro-lock {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   width: 250px;
   height: 250px;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.01);
-  border: 3px solid #7a3737;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(77, 56, 56, 0.062);
+  border: 2px solid hsla(0, 7%, 38%, 0.13);
 }
 
 /* HEADER FIXED NAVIGATION -------------------------------------------------------- */
@@ -227,7 +266,7 @@ body.intro-lock {
 }
 
 .scene-0 {
-    background: #474747;
+    background: #ebe0d6;
 }
 
 .scene-1 {

@@ -149,7 +149,6 @@ window.addEventListener("load", () => {
 
 // CURSOR --------------------------------------------------
 const cursor = document.querySelector(".cursor-glass");
-const links = document.querySelectorAll(".header-nav a");
 
 let lastX = 0;
 let lastY = 0;
@@ -176,18 +175,48 @@ document.addEventListener("mousemove", (e) => {
 
   let speedScale = Math.max(0.5, 1 - velocity / 80);
 
-  let minDistance = Infinity;
+let minDistance = Infinity;
 
-  links.forEach(link => {
-    const rect = link.getBoundingClientRect();
+const targets = [];
 
-    const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
-    const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
+// Always include intro targets
+if (!introOverlay.classList.contains('hidden')) {
+    targets.push(
+        document.getElementById('axis-top'),
+        document.getElementById('axis-bottom')
+    );
+}
+
+// After intro is gone, use header links
+if (introOverlay.classList.contains('hidden')) {
+    targets.push(
+        ...document.querySelectorAll('.header-nav a')
+    );
+}
+
+targets.forEach(target => {
+
+    if (!target) return;
+
+    const rect = target.getBoundingClientRect();
+
+    const dx = Math.max(
+        rect.left - e.clientX,
+        0,
+        e.clientX - rect.right
+    );
+
+    const dy = Math.max(
+        rect.top - e.clientY,
+        0,
+        e.clientY - rect.bottom
+    );
 
     const distance = Math.sqrt(dx * dx + dy * dy);
 
     minDistance = Math.min(minDistance, distance);
-  });
+
+});
 
   const maxDist = 200;
   let proximity = Math.max(0, 1 - minDistance / maxDist);
@@ -547,3 +576,27 @@ function animate() {
 }
 
 animate();
+
+// PAGE TRANSITIONS ----------------------------------------------------------------- //
+
+document.querySelectorAll('a').forEach(link => {
+
+    link.addEventListener('click', (e) => {
+
+        const href = link.getAttribute('href');
+
+        if (!href || href.startsWith('#')) {
+            return;
+        }
+
+        e.preventDefault();
+
+        document.body.classList.add('page-transition');
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 400);
+
+    });
+
+});

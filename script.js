@@ -357,7 +357,7 @@ targets.forEach(target => {
 
 });
 
-    const maxDist = 200;
+    const maxDist = 100;
     let proximity = Math.max(0, 1 - minDistance / maxDist);
 
     targetScale = speedScale * (1 - proximity * 0.9);
@@ -436,6 +436,10 @@ if (container) {
         antialias: true,
         alpha: true
     });
+
+    renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
 
 
     renderer.setSize(

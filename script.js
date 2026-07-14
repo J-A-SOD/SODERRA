@@ -330,6 +330,7 @@ const targets = [
     axisTop,
     axisBottom,
     ...document.querySelectorAll('.header-nav a'),
+    ...document.querySelectorAll('.project-media'),
     ...visiblePanels
 ];
 

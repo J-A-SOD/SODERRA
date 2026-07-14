@@ -95,7 +95,8 @@ const visiblePanels = [...document.querySelectorAll('.category-panel.visible')];
 
 const targets = [
     ...document.querySelectorAll('.header-nav a'),
-    ...visiblePanels
+    ...visiblePanels,
+    ...document.querySelectorAll('.project-media')
 ];
 
 targets.forEach(target => {

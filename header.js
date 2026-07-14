@@ -209,7 +209,7 @@ const gear =
 gear.volume = 1;
 gear.preload = 'auto';
 
-const snapRange = 150;
+const snapRange = 50;
 const snapStrength = 0.2;
 let lastSnapIndex = 0;
 

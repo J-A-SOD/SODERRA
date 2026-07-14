@@ -348,6 +348,14 @@ body.intro-lock {
     justify-content: center;
     align-items: center;
 }
+.scene-2 {
+    background: #dddcce;
+    height: 1000vh;
+    position: relative;
+}
+
+
+
 
 .scene-0 {
     background: #181818;
@@ -403,13 +411,7 @@ body.intro-lock {
 
     z-index: 10;
 }
-.scene-2 {
-    background: #dddcce;
-    height: 1000vh;
-}
-.scene-2 {
-    position: relative;
-}
+
 
 .scene-3 {
     background: #ffffff;
@@ -526,6 +528,7 @@ html {
     width: 40vw;
     height: auto;
 
+
     pointer-events: none;
     user-select: none;
 
@@ -534,8 +537,17 @@ html {
 
 /* PROJECTS */
 
-.project-overlay {
+.project-container {
     position: absolute;
+    left: 0vw;
+    top: 0;
+    width: 75vw;
+    height: 70vh;
+}
+
+
+.project-overlay {
+    position: relative;
 
     top: 50%;
     left: 60vw;
@@ -621,6 +633,7 @@ html {
 }
 
 .project-meta-top,
+.project-meta-side,
 .project-meta-bottom {
 
     font-family: "Satoshi-Variable";
@@ -651,7 +664,16 @@ html {
 .project-meta-bottom {
 
     text-align: right;
-    margin-top: 55vh;
+    margin-top: 35vh;
     margin-right: 1vw;
 
 }
+
+.project-meta-side {
+    color:  #943434;
+    text-align: right;
+    margin-top: 0vh;
+    margin-right: 10vw;
+
+}
+

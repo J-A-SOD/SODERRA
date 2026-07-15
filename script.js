@@ -856,7 +856,7 @@ window.addEventListener("scroll", () => {
 
         panel.style.setProperty(
             "--panel-bg",
-            "url('SODERRA/assets/projects/int_adsolem/img (4).png')"
+            "url('/SODERRA/assets/projects/int_adsolem/img (4).png')"
         );
 
         panel.href = "proj-interactive.html";
@@ -886,7 +886,7 @@ window.addEventListener("scroll", () => {
 
         panel.style.setProperty(
             "--panel-bg",
-            "url('SODERRA/assets/projects/arch_housing/img (4).png')"
+            "url('/SODERRA/assets/projects/arch_housing/img (4).png')"
         );
 
         panelTL.innerHTML =
@@ -912,7 +912,7 @@ window.addEventListener("scroll", () => {
 
         panel.style.setProperty(
             "--panel-bg",
-            "url('SODERRA/assets/projects/art_rome/img (4).jpg')"
+            "url('/SODERRA/assets/projects/art_rome/img (4).jpg')"
         );
 
         panelTL.innerHTML =
@@ -938,7 +938,7 @@ window.addEventListener("scroll", () => {
 
         panel.style.setProperty(
             "--panel-bg",
-            "url('SODERRA/assets/projects/mus_rain/img (4).png')"
+            "url('/SODERRA/assets/projects/mus_rain/img (4).png')"
         );
 
         panelTL.innerHTML =

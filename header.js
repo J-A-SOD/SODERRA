@@ -521,3 +521,29 @@ if (cliffPreview) {
     }, 2000);
 
 }
+
+const houseImages = [
+    "/SODERRA/assets/projects/arch_houseside/img (5).jpg",
+    "/SODERRA/assets/projects/arch_houseside/img (6).jpg",
+    "/SODERRA/assets/projects/arch_houseside/img (3).jpg",
+    "/SODERRA/assets/projects/arch_houseside/img (4).jpg"
+];
+
+const housePreview =
+    document.getElementById("house-preview");
+
+let houseIndex = 0;
+
+if (housePreview) {
+
+    setInterval(() => {
+
+        houseIndex =
+            (houseIndex + 1) % houseImages.length;
+
+        housePreview.src =
+            houseImages[houseIndex];
+
+    }, 2000);
+
+}

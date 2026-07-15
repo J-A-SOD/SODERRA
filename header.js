@@ -575,10 +575,10 @@ if (housingPreview) {
 }
 
 const kampungImages = [
-    "/SODERRA/assets/projects/arch_kampung/img (1).jpg",
-    "/SODERRA/assets/projects/arch_kampung/img (6).jpg",
-    "/SODERRA/assets/projects/arch_kampung/img (9).jpg",
-    "/SODERRA/assets/projects/arch_kampung/img (10).jpg"
+    "/SODERRA/assets/projects/arch_kampung/img (1).png",
+    "/SODERRA/assets/projects/arch_kampung/img (2).png",
+    "/SODERRA/assets/projects/arch_kampung/img (4).png",
+    "/SODERRA/assets/projects/arch_kampung/img (3).png"
 ];
 
 const kampungPreview =
@@ -595,6 +595,32 @@ if (kampungPreview) {
 
         kampungPreview.src =
             kampungImages[kampungIndex];
+
+    }, 2000);
+
+}
+
+const soderraImages = [
+    "/SODERRA/assets/projects/int_soderra/img (1).jpg",
+    "/SODERRA/assets/projects/int_soderra/img (6).jpg",
+    "/SODERRA/assets/projects/int_soderra/img (9).jpg",
+    "/SODERRA/assets/projects/int_soderra/img (10).jpg"
+];
+
+const soderraPreview =
+    document.getElementById("soderra-preview");
+
+let soderraIndex = 0;
+
+if (soderraPreview) {
+
+    setInterval(() => {
+
+        soderraIndex =
+            (soderraIndex + 1) % soderraImages.length;
+
+        soderraPreview.src =
+            soderraImages[soderraIndex];
 
     }, 2000);
 

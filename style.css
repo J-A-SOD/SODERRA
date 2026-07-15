@@ -895,7 +895,7 @@ html {
 .project-meta-bottom {
 
     font-family: "Satoshi-Variable";
-
+    position: fixed;
     font-size: 0.65rem;
     font-weight: 500;
 

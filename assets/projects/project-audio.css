@@ -154,10 +154,6 @@ audio {
     min-height: auto;
   }
 
-  .project-image {
-    aspect-ratio: 16 / 10;
-  }
-
   .audio-card {
     grid-template-columns: 1fr;
   }

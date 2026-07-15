@@ -738,7 +738,67 @@ body.intro-lock {
     pointer-events: none;
 }
 
+@media (max-width: 768px) {
 
+    .category-panel {
+        top: 50%;
+        left: 50%;
+
+        width: 82vw;
+        height: 52vh;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 14px;
+        border-width: 2px;
+
+        font-size: 1rem;
+    }
+
+    .panel-center {
+        font-size: clamp(2rem, 10vw, 4rem);
+        line-height: 0.9;
+        text-align: center;
+    }
+
+    .panel-corner {
+        font-size: 0.55rem;
+        line-height: 1.1;
+        letter-spacing: 0.06em;
+    }
+
+    .panel-tl {
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+
+    .panel-tr {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+
+    .panel-bl {
+        bottom: 0.75rem;
+        left: 0.75rem;
+    }
+
+    .panel-br {
+        bottom: 0.75rem;
+        right: 0.75rem;
+    }
+
+    .category-panel::before {
+        filter:
+            grayscale(80%)
+            blur(2px)
+            hue-rotate(0deg)
+            contrast(0.6)
+            brightness(1.35);
+
+        transform: scale(1.04);
+    }
+
+}
 
 /* TYPOGRAPHY ---------------------------------------------------------------------- */
 
@@ -992,6 +1052,92 @@ html {
 
 }
 
-#ad-solem-preview {
-    transition: opacity 0.4s ease-in-out;
+@media (max-width: 768px) {
+
+    .project-container {
+        width: 92vw;
+        height: auto;
+        left: 0;
+        top: 350px;
+    }
+
+    .project-overlay {
+        top: 50%;
+        left: 50vw;
+
+        width: 90vw;
+
+        flex-direction: column;
+        gap: 0.75rem;
+
+        transform: translate(-50%, -50%);
+    }
+
+    .project-info {
+        width: 100%;
+        min-height: 42vh;
+
+        padding: 1rem;
+
+        border-radius: 14px;
+        border-width: 2px;
+    }
+
+    .project-media {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+
+        border-radius: 14px;
+        border-width: 2px;
+    }
+
+    .project-title {
+        margin-left: 0;
+
+        font-size: clamp(2rem, 10vw, 3.5rem);
+        line-height: 0.9;
+    }
+
+    .project-subtitle {
+        margin-left: 0;
+
+        font-size: clamp(1rem, 5vw, 1.5rem);
+        line-height: 1;
+    }
+
+    .project-description {
+        margin-left: 0;
+        margin-top: 0.75rem;
+
+        max-width: 90%;
+
+        font-size: 0.85rem;
+        line-height: 1.25;
+    }
+
+    .project-meta-top,
+    .project-meta-side,
+    .project-meta-bottom {
+        font-size: 0.52rem;
+        line-height: 1.1;
+        letter-spacing: 0.06em;
+    }
+
+    .project-meta-top {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .project-meta-bottom {
+        bottom: 1rem;
+        left: 1rem;
+    }
+
+    .project-meta-side {
+        margin-right: 0;
+        margin-top: 0.5rem;
+
+        text-align: left;
+    }
+
 }

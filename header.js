@@ -549,10 +549,10 @@ if (housePreview) {
 }
 
 const housingImages = [
-    "/SODERRA/assets/projects/arch_housing/img (1).png",
-    "/SODERRA/assets/projects/arch_housing/img (2).png",
-    "/SODERRA/assets/projects/arch_housing/img (10).png",
-    "/SODERRA/assets/projects/arch_housing/img (11).png"
+    "/SODERRA/assets/projects/arch_housing/img (1).jpg",
+    "/SODERRA/assets/projects/arch_housing/img (2).jpg",
+    "/SODERRA/assets/projects/arch_housing/img (10).jpg",
+    "/SODERRA/assets/projects/arch_housing/img (11).jpg"
 ];
 
 const housingPreview =

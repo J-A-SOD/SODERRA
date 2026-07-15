@@ -89,7 +89,7 @@ img {
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--surface-light);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 3;
 }
 
 .audio-section {
@@ -152,10 +152,6 @@ audio {
   .project-hero {
     grid-template-columns: 1fr;
     min-height: auto;
-  }
-
-  .project-image {
-    aspect-ratio: 16 / 10;
   }
 
   .audio-card {

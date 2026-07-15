@@ -601,10 +601,10 @@ if (kampungPreview) {
 }
 
 const soderraImages = [
-    "/SODERRA/assets/projects/int_soderra/img (1).jpg",
-    "/SODERRA/assets/projects/int_soderra/img (6).jpg",
-    "/SODERRA/assets/projects/int_soderra/img (9).jpg",
-    "/SODERRA/assets/projects/int_soderra/img (10).jpg"
+    "/SODERRA/assets/projects/int_soderra/img (1).png",
+    "/SODERRA/assets/projects/int_soderra/img (6).png",
+    "/SODERRA/assets/projects/int_soderra/img (9).png",
+    "/SODERRA/assets/projects/int_soderra/img (10).png"
 ];
 
 const soderraPreview =

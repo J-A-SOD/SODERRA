@@ -5,7 +5,6 @@
   --text-primary: #f4f4f4;
   --text-secondary: #a8a8a8;
   --border: rgba(255, 255, 255, 0.12);
-  --accent: #ffffff;
 
   --page-padding: clamp(1rem, 4vw, 4rem);
   --section-spacing: clamp(4rem, 8vw, 7rem);
@@ -14,10 +13,6 @@
 
 * {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -41,16 +36,9 @@ img {
   padding: var(--page-padding);
 }
 
-.project-hero {
-  min-height: 35svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-block: clamp(1rem, 3vw, 3rem);
-}
-
 .back-link {
-  width: fit-content;
+  display: inline-block;
+  margin-bottom: clamp(3rem, 7vw, 6rem);
   color: var(--text-secondary);
   text-decoration: none;
   font-size: clamp(0.9rem, 1vw, 1rem);
@@ -61,8 +49,16 @@ img {
   color: var(--text-primary);
 }
 
-.project-intro {
-  max-width: 64rem;
+.project-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  min-height: 45svh;
+}
+
+.project-info {
+  max-width: 58rem;
 }
 
 .project-label {
@@ -73,9 +69,9 @@ img {
   letter-spacing: 0.08em;
 }
 
-.project-intro h1 {
+.project-info h1 {
   margin: 0;
-  font-size: clamp(3.5rem, 11vw, 10rem);
+  font-size: clamp(3.5rem, 10vw, 9rem);
   line-height: 0.9;
   letter-spacing: -0.08em;
   font-weight: 600;
@@ -88,33 +84,48 @@ img {
   font-size: clamp(1.05rem, 1.6vw, 1.5rem);
 }
 
-.project-meta {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
+.project-image {
+  margin: 0;
   overflow: hidden;
-  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--border);
+  background: var(--surface-light);
+  aspect-ratio: 4 / 5;
 }
 
-.project-meta div {
-  padding: clamp(1.25rem, 2vw, 2rem);
+.audio-section {
+  margin-top: var(--section-spacing);
+}
+
+.audio-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding: clamp(1.25rem, 3vw, 3rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   background: var(--surface);
 }
 
-.project-meta span {
-  display: block;
-  margin-bottom: 0.5rem;
+.audio-label {
+  margin: 0 0 0.5rem;
   color: var(--text-secondary);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
-.project-meta p {
+.audio-card h2 {
   margin: 0;
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  font-size: clamp(1.75rem, 4vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
+audio {
+  width: 100%;
+  accent-color: var(--text-primary);
 }
 
 .project-section {
@@ -137,57 +148,18 @@ img {
   font-size: clamp(1rem, 1.4vw, 1.25rem);
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: clamp(14rem, 22vw, 28rem);
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
-}
-
-.gallery-item {
-  margin: 0;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: var(--surface-light);
-}
-
-.gallery-item img {
-  transition: transform 500ms ease, filter 500ms ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.04);
-  filter: brightness(1.08);
-}
-
-.gallery-item-large {
-  grid-column: span 2;
-  grid-row: span 3;
-}
-
-.gallery-item-wide {
-  grid-column: span 2;
-  grid-row: span 1;
-}
-
 @media (max-width: 900px) {
   .project-hero {
-    min-height: 65svh;
+    grid-template-columns: 1fr;
+    min-height: auto;
   }
 
-  .project-meta {
-    grid-template-columns: repeat(2, 1fr);
+  .project-image {
+    aspect-ratio: 16 / 10;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: clamp(13rem, 42vw, 22rem);
-  }
-
-  .gallery-item-large,
-  .gallery-item-wide {
-    grid-column: span 2;
+  .audio-card {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -196,18 +168,11 @@ img {
     padding-inline: 1rem;
   }
 
-  .project-meta {
-    grid-template-columns: 1fr;
+  .back-link {
+    margin-bottom: 3rem;
   }
 
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: clamp(15rem, 70vw, 24rem);
-  }
-
-  .gallery-item-large,
-  .gallery-item-wide {
-    grid-column: span 1;
-    grid-row: span 1;
+  .project-info h1 {
+    letter-spacing: -0.06em;
   }
 }

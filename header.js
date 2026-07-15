@@ -523,10 +523,10 @@ if (cliffPreview) {
 }
 
 const houseImages = [
-    "/SODERRA/assets/projects/arch_house/img (1).png",
-    "/SODERRA/assets/projects/arch_house/img (2).png",
-    "/SODERRA/assets/projects/arch_house/img (10).png",
-    "/SODERRA/assets/projects/arch_house/img (11).png"
+    "/SODERRA/assets/projects/arch_house/img (3).png",
+    "/SODERRA/assets/projects/arch_house/img (4).png",
+    "/SODERRA/assets/projects/arch_house/img (5).png",
+    "/SODERRA/assets/projects/arch_house/img (6).png"
 ];
 
 const housePreview =
@@ -549,10 +549,10 @@ if (housePreview) {
 }
 
 const housingImages = [
-    "/SODERRA/assets/projects/arch_housing/img (5).png",
-    "/SODERRA/assets/projects/arch_housing/img (6).png",
-    "/SODERRA/assets/projects/arch_housing/img (3).png",
-    "/SODERRA/assets/projects/arch_housing/img (4).png"
+    "/SODERRA/assets/projects/arch_housing/img (1).png",
+    "/SODERRA/assets/projects/arch_housing/img (2).png",
+    "/SODERRA/assets/projects/arch_housing/img (10).png",
+    "/SODERRA/assets/projects/arch_housing/img (11).png"
 ];
 
 const housingPreview =

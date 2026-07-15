@@ -495,3 +495,29 @@ if (romePreview) {
     }, 2000);
 
 }
+
+const cliffImages = [
+    "/SODERRA/assets/projects/arch_cliffside/img (1).jpg",
+    "/SODERRA/assets/projects/arch_cliffside/img (2).jpg",
+    "/SODERRA/assets/projects/arch_cliffside/img (3).jpg",
+    "/SODERRA/assets/projects/arch_cliffside/img (4).jpg"
+];
+
+const cliffPreview =
+    document.getElementById("cliff-preview");
+
+let cliffIndex = 0;
+
+if (cliffPreview) {
+
+    setInterval(() => {
+
+        cliffIndex =
+            (cliffIndex + 1) % cliffImages.length;
+
+        cliffPreview.src =
+            cliffImages[cliffIndex];
+
+    }, 2000);
+
+}

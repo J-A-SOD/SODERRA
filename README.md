@@ -22,9 +22,8 @@ https://github.com/J-A-SOD/SODERRA/tree/dev
 
 ### PROCESS IMAGES
 
-![process image](1.png "Title")
-![process image](1.png "Title")
-![process image](1.png "Title")
-![process image](1.png "Title")
-![process image](1.png "Title")
-![process image](1.png "Title")
+![process image](1.jpeg "Title")
+![process image](2.jpeg "Title")
+![process image](3.jpeg "Title")
+![process image](4.jpeg "Title")
+![process image](5.jpeg "Title")

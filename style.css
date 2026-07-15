@@ -651,6 +651,7 @@ body.intro-lock {
         font-weight: 1000;
 
     opacity: 0;
+    cursor: none;
     pointer-events: none;
     transition: opacity 0.4s ease;
     z-index: 50;
@@ -670,6 +671,7 @@ body.intro-lock {
 
 .category-panel {
     position: fixed;
+    cursor: none;
 }
 
 .panel-center {

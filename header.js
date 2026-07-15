@@ -417,3 +417,29 @@ if (hk02Preview) {
     }, 2000);
 
 }
+
+const mandelImages = [
+    "/SODERRA/assets/projects/art_mandel/img (1).jpg",
+    "/SODERRA/assets/projects/art_mandel/img (2).jpg",
+    "/SODERRA/assets/projects/art_mandel/img (3).jpg",
+    "/SODERRA/assets/projects/art_mandel/img (4).jpg"
+];
+
+const mandelPreview =
+    document.getElementById("mandel-preview");
+
+let mandelIndex = 0;
+
+if (mandelPreview) {
+
+    setInterval(() => {
+
+        mandelIndex =
+            (mandelIndex + 1) % mandelImages.length;
+
+        mandelPreview.src =
+            mandelImages[mandelIndex];
+
+    }, 2000);
+
+}

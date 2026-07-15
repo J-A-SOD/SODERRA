@@ -573,3 +573,29 @@ if (housingPreview) {
     }, 2000);
 
 }
+
+const kampungImages = [
+    "/SODERRA/assets/projects/arch_kampung/img (1).jpg",
+    "/SODERRA/assets/projects/arch_kampung/img (6).jpg",
+    "/SODERRA/assets/projects/arch_kampung/img (9).jpg",
+    "/SODERRA/assets/projects/arch_kampung/img (10).jpg"
+];
+
+const kampungPreview =
+    document.getElementById("kampung-preview");
+
+let kampungIndex = 0;
+
+if (kampungPreview) {
+
+    setInterval(() => {
+
+        kampungIndex =
+            (kampungIndex + 1) % kampungImages.length;
+
+        kampungPreview.src =
+            kampungImages[kampungIndex];
+
+    }, 2000);
+
+}

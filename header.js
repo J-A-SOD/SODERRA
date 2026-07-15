@@ -523,10 +523,10 @@ if (cliffPreview) {
 }
 
 const houseImages = [
-    "/SODERRA/assets/projects/arch_houseside/img (5).png",
-    "/SODERRA/assets/projects/arch_houseside/img (6).png",
-    "/SODERRA/assets/projects/arch_houseside/img (3).png",
-    "/SODERRA/assets/projects/arch_houseside/img (4).png"
+    "/SODERRA/assets/projects/arch_house/img (5).png",
+    "/SODERRA/assets/projects/arch_house/img (6).png",
+    "/SODERRA/assets/projects/arch_house/img (3).png",
+    "/SODERRA/assets/projects/arch_house/img (4).png"
 ];
 
 const housePreview =
@@ -543,6 +543,32 @@ if (housePreview) {
 
         housePreview.src =
             houseImages[houseIndex];
+
+    }, 2000);
+
+}
+
+const housingImages = [
+    "/SODERRA/assets/projects/arch_housing/img (5).png",
+    "/SODERRA/assets/projects/arch_housing/img (6).png",
+    "/SODERRA/assets/projects/arch_housing/img (3).png",
+    "/SODERRA/assets/projects/arch_housing/img (4).png"
+];
+
+const housingPreview =
+    document.getElementById("housing-preview");
+
+let housingIndex = 0;
+
+if (housingPreview) {
+
+    setInterval(() => {
+
+        housingIndex =
+            (housingIndex + 1) % housingImages.length;
+
+        housingPreview.src =
+            housingImages[housingIndex];
 
     }, 2000);
 

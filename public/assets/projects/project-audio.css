@@ -54,7 +54,7 @@ img {
   grid-template-columns: 1.1fr 0.9fr;
   gap: clamp(2rem, 6vw, 6rem);
   align-items: end;
-  min-height: 45svh;
+  min-height: 35svh;
 }
 
 .project-info {
@@ -89,7 +89,7 @@ img {
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--surface-light);
-  aspect-ratio: 5 / 3;
+  aspect-ratio: 16 / 6;
 }
 
 .audio-section {

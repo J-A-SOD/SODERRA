@@ -469,3 +469,29 @@ if (japanPreview) {
     }, 2000);
 
 }
+
+const romeImages = [
+    "/SODERRA/assets/projects/art_rome/img (1).jpg",
+    "/SODERRA/assets/projects/art_rome/img (2).jpg",
+    "/SODERRA/assets/projects/art_rome/img (3).jpg",
+    "/SODERRA/assets/projects/art_rome/img (4).jpg"
+];
+
+const romePreview =
+    document.getElementById("rome-preview");
+
+let romeIndex = 0;
+
+if (romePreview) {
+
+    setInterval(() => {
+
+        romeIndex =
+            (romeIndex + 1) % romeImages.length;
+
+        romePreview.src =
+            romeImages[romeIndex];
+
+    }, 2000);
+
+}

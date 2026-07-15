@@ -89,7 +89,7 @@ img {
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--surface-light);
-  aspect-ratio: 5 / 3;
+  aspect-ratio: 16 / 6;
 }
 
 .audio-section {

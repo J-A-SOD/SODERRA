@@ -283,6 +283,6 @@ if (adSolemPreview) {
         adSolemPreview.src =
             adSolemImages[adSolemIndex];
 
-    }, 1000);
+    }, 2000);
 
 }

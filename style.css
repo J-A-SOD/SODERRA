@@ -993,3 +993,7 @@ html {
     }
 
 }
+
+#ad-solem-preview {
+    transition: opacity 0.4s ease-in-out;
+}

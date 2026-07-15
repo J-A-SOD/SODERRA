@@ -822,13 +822,19 @@ html {
 }
 
 .project-info {
+    position: relative;
+
     width: 30vw;
     min-height: 25rem;
-    left: 20vw;
+
+    padding: 1.5rem;
 
     border: 2px solid #292929;
     border-radius: 20px;
+
+    overflow: hidden;
 }
+
 
 .project-media {
     flex: 1;
@@ -881,15 +887,18 @@ html {
 }
 
 .project-description {
-    margin-left: 5%;
+    margin-left: 0;
+    margin-top: 0.75rem;
+
+    max-width: 85%;
 
     font-family: "Satoshi-Variable";
     font-size: 1vw;
-    top: 10px;
+    line-height: 1.25;
+
     font-weight: 500;
     color: #303030;
 }
-
 .project-meta-top,
 .project-meta-side,
 .project-meta-bottom {
@@ -907,24 +916,22 @@ html {
     color: #292929;
 
 }
-
 .project-meta-top {
+    position: absolute;
+
+    top: 1.5rem;
+    right: 1.5rem;
 
     text-align: right;
-
-    flex-shrink: 0;
-
-    margin-top: -4rem;
-    margin-right: 1vw;
-
 }
 
 .project-meta-bottom {
+    position: absolute;
 
-    text-align: right;
-    margin-top: 35vh;
-    margin-right: 1vw;
+    bottom: 1.5rem;
+    left: 1.5rem;
 
+    text-align: left;
 }
 
 .project-meta-side {

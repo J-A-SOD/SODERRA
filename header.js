@@ -443,3 +443,29 @@ if (mandelPreview) {
     }, 2000);
 
 }
+
+const japanImages = [
+    "/SODERRA/assets/projects/art_japan/img (1).jpg",
+    "/SODERRA/assets/projects/art_japan/img (2).jpg",
+    "/SODERRA/assets/projects/art_japan/img (3).jpg",
+    "/SODERRA/assets/projects/art_japan/img (4).jpg"
+];
+
+const japanPreview =
+    document.getElementById("japan-preview");
+
+let japanIndex = 0;
+
+if (japanPreview) {
+
+    setInterval(() => {
+
+        japanIndex =
+            (japanIndex + 1) % japanImages.length;
+
+        japanPreview.src =
+            japanImages[japanIndex];
+
+    }, 2000);
+
+}

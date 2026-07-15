@@ -736,6 +736,8 @@ if (container) {
             }
 
         });
+
+        
         
         if (piano) {
             const targetRotation = scroll * 0.002;
@@ -823,44 +825,133 @@ document.querySelectorAll('a').forEach(link => {
 // PANELS
 
 const panel = document.getElementById("panel-inter");
+const panelTitle = document.getElementById("panel-title");
+const panelTL = document.getElementById("panel-tl");
+const panelTR = document.getElementById("panel-tr");
+const panelBL = document.getElementById("panel-bl");
+const panelBR = document.getElementById("panel-br");
 
 window.addEventListener("scroll", () => {
-    const y = window.scrollY;
+    
+    const scene3 =
+        document.querySelector(".scene-3");
 
-    if (y >= 1150 && y < 1250) {
-        panel.textContent = "INTERACTIVE MEDIA";
+    const rect =
+        scene3.getBoundingClientRect();
+
+    const sceneHeight =
+        rect.height - window.innerHeight;
+
+    const progress =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                -rect.top / sceneHeight
+            )
+        );
+            
+    if (progress >= 0.13 && progress < 0.30) {
+
         panel.href = "proj-interactive.html";
+        panelTitle.textContent = "INTERACTIVE MEDIA";
+
+        panelTL.innerHTML =
+            "INTERACTIVE<br>MEDIA";
+
+        panelTR.innerHTML =
+            "2025-2026<br>ACTIVE";
+
+        panelBL.innerHTML =
+            "PROJECT COUNT<br>ONGOING";
+
+        panelBR.innerHTML =
+            "CLICK PANEL<br>TO VIEW WORK";
+
         panel.classList.add("visible");
-        archSfx.play();
+
+    
     }
-    else if (y >= 1550 && y < 1650) {
-        panel.textContent = "ARCH";
+
+    else if (progress >= 0.35 && progress < 0.50) {
+
         panel.href = "proj-arch.html";
+        panelTitle.textContent = "ARCHITECTURAL DESIGN";
+
+        panelTL.innerHTML =
+            "ARCHITECTURE<br>DESIGN";
+
+        panelTR.innerHTML =
+            "2021–2026<br>ACTIVE";
+
+        panelBL.innerHTML =
+            "THEORETICAL<br>DESIGN WORK";
+
+        panelBR.innerHTML =
+            "CLICK PANEL<br>TO VIEW WORK";
+
         panel.classList.add("visible");
-        interSfx.play();
+
     }
-    else if (y >= 1870 && y < 1970) {
-        panel.textContent = "PHOTOS";
+
+    else if (progress >= 0.55 && progress < 0.70) {
+
         panel.href = "proj-photo.html";
+        panelTitle.textContent = "ART AND VISUAL MEDIA";
+
+        panelTL.innerHTML =
+            "CONCEPT ARTWORK<br>CREATION";
+
+        panelTR.innerHTML =
+            "2019–2026<br>ACTIVE";
+
+        panelBL.innerHTML =
+            "INDIVIDUAL<br>WORKS";
+
+        panelBR.innerHTML =
+            "CLICK PANEL<br>TO VIEW WORK";
+
         panel.classList.add("visible");
-        pianoSfx.play();
+
     }
-    else if (y >= 2270 && y < 2370) {
-        panel.textContent = "MUSIC";
+
+    else if (progress >= 0.75 && progress < 0.95) {
+
         panel.href = "proj-music.html";
+        panelTitle.textContent = "MUSIC AND AUDIO";
+
+        panelTL.innerHTML =
+            "MUSIC PRODUCTION<br>AND SOUND DESIGN";
+
+        panelTR.innerHTML =
+            "2018–2026<br>ACTIVE";
+
+        panelBL.innerHTML =
+            "COMPOSITION AND<br>ARRANGEMENT";
+
+        panelBR.innerHTML =
+            "CLICK PANEL<br>TO VIEW WORK";
+
         panel.classList.add("visible");
-        lensSfx.play();
+
     }
+
     else {
-        panel.classList.remove("visible");
+    panel.classList.remove("visible");
     }
+
 });
+
+
+
+
 
 // DEBUG
 
-// window.addEventListener("scroll", () => {
-//     console.log(window.scrollY);
-// });
+window.addEventListener("scroll", () => {
+    console.log(window.scrollY);
+    
+});
 
 // document.getElementById("panel-inter").addEventListener("click", () => {
 //     console.log("clicked");
@@ -869,36 +960,36 @@ window.addEventListener("scroll", () => {
 
 // SNAPPING SCROLL
 
-const snapPoints = [1200, 1600, 1920, 2320];
-const snapRange = 250;      // distance at which attraction starts
-const snapStrength = 0.02;  // higher = stronger pull
+// const snapPoints = [1200, 1600, 1920, 2320];
+// const snapRange = 250;      // distance at which attraction starts
+// const snapStrength = 0.02;  // higher = stronger pull
 
-function magneticScroll() {
-    const y = window.scrollY;
+// function magneticScroll() {
+//     const y = window.scrollY;
 
-    let closest = snapPoints[0];
-    let closestDistance = Math.abs(y - closest);
+//     let closest = snapPoints[0];
+//     let closestDistance = Math.abs(y - closest);
 
-    snapPoints.forEach(point => {
-        const distance = Math.abs(y - point);
+//     snapPoints.forEach(point => {
+//         const distance = Math.abs(y - point);
 
-        if (distance < closestDistance) {
-            closest = point;
-            closestDistance = distance;
-        }
-    });
+//         if (distance < closestDistance) {
+//             closest = point;
+//             closestDistance = distance;
+//         }
+//     });
 
-    if (closestDistance < snapRange) {
-        const target = y + (closest - y) * snapStrength;
+//     if (closestDistance < snapRange) {
+//         const target = y + (closest - y) * snapStrength;
 
-        window.scrollTo({
-            top: target,
-            behavior: "instant"
-        });
-    }
+//         window.scrollTo({
+//             top: target,
+//             behavior: "instant"
+//         });
+//     }
 
-    requestAnimationFrame(magneticScroll);
-}
+//     requestAnimationFrame(magneticScroll);
+// }
 
-magneticScroll();
+// magneticScroll();
 

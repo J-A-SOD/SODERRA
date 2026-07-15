@@ -430,7 +430,7 @@ body.intro-lock {
 }
 
 .scene-4 {
-    background: #777;
+    background: #dddcce;
 }
 
 /* HUB 3D MODEL ---------------------------------------------------------------------------- */
@@ -447,32 +447,33 @@ body.intro-lock {
 /* CATEGORY ---------------------------------------------- */
 
 .category-panel {
-  position: fixed;
+    position: fixed;
 
-  top: 50%;
-  left: 25vw;
-  transform: translateY(-50%);
-  width: 50vw;
-  height: 30vw;
+    top: 50%;
+    left: 25vw;
+    transform: translateY(-50%);
+    width: 50vw;
+    height: 30vw;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  background: rgba(104, 76, 76, 0.5);
-  border: 3px solid rgba(190, 190, 190, 0.349);
-  border-radius: 16px;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.5);
+    border: 3px solid rgba(85, 85, 85, 0.349);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 
-  color: white;
-  text-decoration: none;
-  font-size: clamp(1rem, 1.2vw, 1.25rem);
+    color: rgb(37, 37, 37);
+    text-decoration: none;
+    font-size: 2vw;
+        font-weight: 1000;
 
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-  z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 50;
 }
 
 .category-panel.visible {
@@ -484,6 +485,47 @@ body.intro-lock {
 #category-model-container {
     width: 100vw;
     height: 100vh;
+}
+
+.category-panel {
+    position: fixed;
+}
+
+.panel-center {
+    font-size: 3.5vw;
+    font-weight: 1000;
+}
+
+.panel-corner {
+    position: absolute;
+    font-weight: 400;
+    font-size: 0.7rem;
+    line-height: 1.2;
+
+    letter-spacing: 0.08em;
+
+    color: #424242;
+}
+.panel-tl {
+    top: 1rem;
+    left: 1rem;
+}
+
+.panel-tr {
+    top: 1rem;
+    right: 1rem;
+    text-align: right;
+}
+
+.panel-bl {
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.panel-br {
+    bottom: 1rem;
+    right: 1rem;
+    text-align: right;
 }
 
 /* TYPOGRAPHY ---------------------------------------------------------------------- */

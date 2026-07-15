@@ -277,20 +277,13 @@ body.intro-lock {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  pointer-events: none;
   transform: translate(-50%, -50%);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
   background: rgba(77, 56, 56, 0.062);
   border: 2px solid hsla(0, 7%, 38%, 0.13);
+  transition: border-color 1s ease, transform 0.1s ease;
 }
-
-.cursor-glass {
-    transition:
-        border-color 1s ease,
-        transform 0.1s ease;
-}
-
 .cursor-glass.active {
     border-color: #c95656;
     border-width: 12px;

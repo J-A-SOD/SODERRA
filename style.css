@@ -309,6 +309,7 @@ body.intro-lock {
     z-index: 1;
     display: flex;
     font-size: 20px;
+    filter: blur(0px);
 }
 
 .header-nav a {
@@ -363,7 +364,79 @@ body.intro-lock {
 
 .scene-1 {
     position: relative;
+    background: #181818;
+}
+.scene-1 {
+    position: relative;
     background: #111;
+    overflow: hidden;
+}
+
+.scene-1-content {
+    width: min(86vw, 1200px);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3vh;
+
+    color: #dddcce;
+
+    z-index: 2;
+}
+
+.scene-1-kicker {
+    font-family: 'Satoshi-Variable', sans-serif;
+
+    font-size: clamp(0.7rem, 0.9vw, 1rem);
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: rgba(221, 220, 206, 0.65);
+}
+
+.scene-1-title {
+    font-family: 'Satoshi-Variable', sans-serif;
+
+    font-size: clamp(3rem, 8vw, 9rem);
+    font-weight: 900;
+
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+
+    color: #dddcce;
+}
+
+.scene-1-body {
+    max-width: 42rem;
+
+    font-family: 'Satoshi-Variable', sans-serif;
+
+    font-size: clamp(1rem, 1.3vw, 1.4rem);
+    font-weight: 400;
+
+    line-height: 1.25;
+
+    color: rgba(221, 220, 206, 0.75);
+}
+
+.scene-1-meta {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 8vh;
+
+    font-size: clamp(0.65rem, 0.8vw, 0.9rem);
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: rgba(199, 95, 95, 0.952);
 }
 
 .scene-1::before {
@@ -400,7 +473,7 @@ body.intro-lock {
     width: 100%;
     height: 8vh;
 
-    background: #000000;
+    background: #181818;
 
     clip-path: polygon(
         0 0,
@@ -414,7 +487,7 @@ body.intro-lock {
 
 
 .scene-3 {
-    background: #ffffff;
+    background: #d8d8d0;
     min-height: 380vh;
     position: relative;
     z-index: -1;
@@ -430,7 +503,113 @@ body.intro-lock {
 }
 
 .scene-4 {
+    position: relative;
+
+    background: #181818;
+    overflow: hidden;
+}
+
+.contact-content {
+    width: min(86vw, 1200px);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3vh;
+
+    color: #dddcce;
+
+    z-index: 2;
+}
+
+.contact-kicker {
+    font-family: 'Satoshi-Variable', sans-serif;
+
+    font-size: clamp(0.7rem, 0.9vw, 1rem);
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: rgba(221, 220, 206, 0.65);
+}
+
+.contact-title {
+    font-family: 'Satoshi-Variable', sans-serif;
+
+    font-size: clamp(3rem, 8vw, 9rem);
+    font-weight: 900;
+
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+
+    color: #dddcce;
+}
+
+.contact-body {
+    max-width: 42rem;
+
+    font-family: 'Satoshi-Variable', sans-serif;
+
+    font-size: clamp(1rem, 1.3vw, 1.4rem);
+    font-weight: 400;
+
+    line-height: 1.25;
+
+    color: rgba(221, 220, 206, 0.75);
+}
+
+.contact-links {
+    display: flex;
+    gap: 1rem;
+
+    margin-top: 2vh;
+}
+
+.contact-links a {
+    padding: 0.8rem 1.2rem;
+
+    border: 1px solid rgba(221, 220, 206, 0.65);
+    border-radius: 999px;
+    font-size: 10;
+    color: #dddcce;
+
+    font-size: 0.8rem;
+    font-weight: 1000;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: none;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.contact-links a:hover {
     background: #dddcce;
+    color: #181818;
+    border-color: #dddcce;
+}
+
+.contact-meta {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 8vh;
+
+    font-size: clamp(0.65rem, 0.8vw, 0.9rem);
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: rgba(221, 220, 206, 0.55);
 }
 
 /* HUB 3D MODEL ---------------------------------------------------------------------------- */
@@ -458,6 +637,7 @@ body.intro-lock {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     background: rgba(255, 255, 255, 0.5);
     border: 3px solid rgba(85, 85, 85, 0.349);
@@ -508,25 +688,61 @@ body.intro-lock {
 }
 .panel-tl {
     top: 1rem;
+    color: rgb(39, 39, 39);
     left: 1rem;
 }
 
 .panel-tr {
     top: 1rem;
     right: 1rem;
+    color: rgb(39, 39, 39);
     text-align: right;
 }
 
 .panel-bl {
     bottom: 1rem;
+    color: rgb(39, 39, 39);
     left: 1rem;
 }
 
 .panel-br {
+    font-weight: 700;
     bottom: 1rem;
     right: 1rem;
+    z-index: 0;
+    color: rgb(104, 65, 65);
     text-align: right;
 }
+
+.category-panel {
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20%);
+    background-repeat: no-repeat;
+}
+
+.category-panel::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: var(--panel-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    filter: grayscale(80%) blur(3px) hue-rotate(0deg) contrast(0.5) brightness(1.5);
+    transform: scale(1);
+
+    opacity: 0.75;
+
+    z-index: -2;
+    pointer-events: none;
+}
+
+
 
 /* TYPOGRAPHY ---------------------------------------------------------------------- */
 
@@ -719,3 +935,54 @@ html {
 
 }
 
+@media (max-width: 768px) {
+
+    .scene-1-content {
+        width: 86vw;
+        gap: 2.5vh;
+    }
+
+    .scene-1-title {
+        font-size: clamp(3rem, 14vw, 5rem);
+    }
+
+    .scene-1-body {
+        font-size: 1rem;
+    }
+
+    .scene-1-meta {
+        flex-direction: column;
+        gap: 0.6rem;
+
+        margin-top: 6vh;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .contact-content {
+        width: 86vw;
+        gap: 2.5vh;
+    }
+
+    .contact-title {
+        font-size: clamp(3rem, 14vw, 5rem);
+    }
+
+    .contact-body {
+        font-size: 1rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-meta {
+        flex-direction: column;
+        gap: 0.6rem;
+
+        margin-top: 6vh;
+    }
+
+}

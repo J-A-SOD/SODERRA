@@ -331,6 +331,7 @@ const targets = [
     axisBottom,
     ...document.querySelectorAll('.header-nav a'),
     ...document.querySelectorAll('.project-media'),
+    ...document.querySelectorAll('.contact-links'),
     ...visiblePanels
 ];
 
@@ -853,6 +854,11 @@ window.addEventListener("scroll", () => {
             
     if (progress >= 0.13 && progress < 0.30) {
 
+        panel.style.setProperty(
+            "--panel-bg",
+            "url('./assets/projects/int_adsolem/img (4).png')"
+        );
+
         panel.href = "proj-interactive.html";
         panelTitle.textContent = "INTERACTIVE MEDIA";
 
@@ -878,6 +884,11 @@ window.addEventListener("scroll", () => {
         panel.href = "proj-arch.html";
         panelTitle.textContent = "ARCHITECTURAL DESIGN";
 
+        panel.style.setProperty(
+            "--panel-bg",
+            "url('./assets/projects/arch_housing/img (4).png')"
+        );
+
         panelTL.innerHTML =
             "ARCHITECTURE<br>DESIGN";
 
@@ -899,6 +910,11 @@ window.addEventListener("scroll", () => {
         panel.href = "proj-photo.html";
         panelTitle.textContent = "ART AND VISUAL MEDIA";
 
+        panel.style.setProperty(
+            "--panel-bg",
+            "url('./assets/projects/art_rome/img (4).jpg')"
+        );
+
         panelTL.innerHTML =
             "CONCEPT ARTWORK<br>CREATION";
 
@@ -919,6 +935,11 @@ window.addEventListener("scroll", () => {
 
         panel.href = "proj-music.html";
         panelTitle.textContent = "MUSIC AND AUDIO";
+
+        panel.style.setProperty(
+            "--panel-bg",
+            "url('./assets/projects/mus_rain/img (4).png')"
+        );
 
         panelTL.innerHTML =
             "MUSIC PRODUCTION<br>AND SOUND DESIGN";

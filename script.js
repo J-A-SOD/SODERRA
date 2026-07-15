@@ -886,7 +886,7 @@ window.addEventListener("scroll", () => {
 
         panel.style.setProperty(
             "--panel-bg",
-            "url('/SODERRA/assets/projects/arch_housing/img (4).png')"
+            "url('/SODERRA/assets/projects/arch_housing/img (2).jpg')"
         );
 
         panelTL.innerHTML =
@@ -938,7 +938,7 @@ window.addEventListener("scroll", () => {
 
         panel.style.setProperty(
             "--panel-bg",
-            "url('/SODERRA/assets/projects/mus_rain/img (4).png')"
+            "url('/SODERRA/assets/projects/mus_suzanne/suzanne.png')"
         );
 
         panelTL.innerHTML =

@@ -793,7 +793,7 @@ html {
     z-index: 1;
 }
 
-/* PROJECTS */
+/* fS */
 
 .project-container {
     position: absolute;
@@ -838,6 +838,7 @@ html {
 
 .project-media {
     flex: 1;
+    aspect-ratio: 16 / 9;
     cursor: none;
     border: 2px solid #292929;
     border-radius: 20px;
@@ -853,6 +854,7 @@ html {
 
     object-fit: cover;
     display: block;
+    object-position: center;
 }
 
 .project-media-link {

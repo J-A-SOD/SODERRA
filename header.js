@@ -210,7 +210,7 @@ gear.volume = 1;
 gear.preload = 'auto';
 
 const snapRange = 50;
-const snapStrength = 0.2;
+const snapStrength = 0.0;
 let lastSnapIndex = 0;
 
 function magneticScroll() {
@@ -282,6 +282,85 @@ if (adSolemPreview) {
 
         adSolemPreview.src =
             adSolemImages[adSolemIndex];
+
+    }, 2000);
+
+}
+
+
+const imleImages = [
+    "/SODERRA/assets/projects/int_IMLE/img (1).png",
+    "/SODERRA/assets/projects/int_IMLE/img (2).png",
+    "/SODERRA/assets/projects/int_IMLE/img (3).png",
+    "/SODERRA/assets/projects/int_IMLE/img (4).png"
+];
+
+const imlePreview =
+    document.getElementById("imle-preview");
+
+let imleIndex = 0;
+
+if (imlePreview) {
+
+    setInterval(() => {
+
+        imleIndex =
+            (imleIndex + 1) % imleImages.length;
+
+        imlePreview.src =
+            imleImages[imleIndex];
+
+    }, 2000);
+
+}
+
+const kowloonImages = [
+    "/SODERRA/assets/projects/int_kowloon/img (1).png",
+    "/SODERRA/assets/projects/int_kowloon/img (2).png",
+    "/SODERRA/assets/projects/int_kowloon/img (3).png",
+    "/SODERRA/assets/projects/int_kowloon/img (4).png"
+];
+
+const kowloonPreview =
+    document.getElementById("kowloon-preview");
+
+let kowloonIndex = 0;
+
+if (kowloonPreview) {
+
+    setInterval(() => {
+
+        kowloonIndex =
+            (kowloonIndex + 1) % kowloonImages.length;
+
+        kowloonPreview.src =
+            kowloonImages[kowloonIndex];
+
+    }, 2000);
+
+}
+
+const synthImages = [
+    "/SODERRA/assets/projects/int_synth/img (1).png",
+    "/SODERRA/assets/projects/int_synth/img (2).png",
+    "/SODERRA/assets/projects/int_synth/img (3).png",
+    "/SODERRA/assets/projects/int_synth/img (4).png"
+];
+
+const synthPreview =
+    document.getElementById("synth-preview");
+
+let synthIndex = 0;
+
+if (synthPreview) {
+
+    setInterval(() => {
+
+        synthIndex =
+            (synthIndex + 1) % synthImages.length;
+
+        synthPreview.src =
+            synthImages[synthIndex];
 
     }, 2000);
 

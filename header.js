@@ -575,10 +575,10 @@ if (housingPreview) {
 }
 
 const kampungImages = [
-    "/SODERRA/assets/projects/arch_kampung/img (1).png",
-    "/SODERRA/assets/projects/arch_kampung/img (6).png",
-    "/SODERRA/assets/projects/arch_kampung/img (9).png",
-    "/SODERRA/assets/projects/arch_kampung/img (10).png"
+    "/SODERRA/assets/projects/arch_kampung/img (1).jpg",
+    "/SODERRA/assets/projects/arch_kampung/img (6).jpg",
+    "/SODERRA/assets/projects/arch_kampung/img (9).jpg",
+    "/SODERRA/assets/projects/arch_kampung/img (10).jpg"
 ];
 
 const kampungPreview =

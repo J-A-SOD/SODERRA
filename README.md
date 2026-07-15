@@ -19,3 +19,7 @@ https://j-a-sod.github.io/SODERRA/
 
 ### PROJECT LINK
 https://github.com/J-A-SOD/SODERRA/tree/dev
+
+### PROCESS IMAGES
+
+![process image](1.png "Title")

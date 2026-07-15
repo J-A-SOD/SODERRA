@@ -660,6 +660,7 @@ body.intro-lock {
     opacity: 1;
     z-index: 51;
     pointer-events: all;
+    cursor: none;
 }
 
 #category-model-container {

@@ -167,7 +167,8 @@ img {
 }
 
 .gallery-item-wide {
-  grid-column: span 2;
+  grid-column: span 3;
+  grid-row: span 2;
 }
 
 @media (max-width: 900px) {

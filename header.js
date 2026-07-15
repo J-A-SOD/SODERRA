@@ -261,3 +261,28 @@ function magneticScroll() {
 
 magneticScroll();
 
+const adSolemImages = [
+    "/SODERRA/assets/projects/int_adsolem/img (1).png",
+    "/SODERRA/assets/projects/int_adsolem/img (2).png",
+    "/SODERRA/assets/projects/int_adsolem/img (3).png",
+    "/SODERRA/assets/projects/int_adsolem/img (4).png"
+];
+
+const adSolemPreview =
+    document.getElementById("ad-solem-preview");
+
+let adSolemIndex = 0;
+
+if (adSolemPreview) {
+
+    setInterval(() => {
+
+        adSolemIndex =
+            (adSolemIndex + 1) % adSolemImages.length;
+
+        adSolemPreview.src =
+            adSolemImages[adSolemIndex];
+
+    }, 1000);
+
+}

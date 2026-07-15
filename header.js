@@ -577,8 +577,8 @@ if (housingPreview) {
 const kampungImages = [
     "/SODERRA/assets/projects/arch_kampung/img (1).png",
     "/SODERRA/assets/projects/arch_kampung/img (2).png",
-    "/SODERRA/assets/projects/arch_kampung/img (4).png",
-    "/SODERRA/assets/projects/arch_kampung/img (3).png"
+    "/SODERRA/assets/projects/arch_kampung/img (3).png",
+    "/SODERRA/assets/projects/arch_kampung/img (5).png"
 ];
 
 const kampungPreview =

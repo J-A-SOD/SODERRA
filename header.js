@@ -497,10 +497,10 @@ if (romePreview) {
 }
 
 const cliffImages = [
-    "/SODERRA/assets/projects/arch_cliffside/img (1).jpg",
-    "/SODERRA/assets/projects/arch_cliffside/img (2).jpg",
-    "/SODERRA/assets/projects/arch_cliffside/img (3).jpg",
-    "/SODERRA/assets/projects/arch_cliffside/img (4).jpg"
+    "/SODERRA/assets/projects/arch_cliffside/img (1).png",
+    "/SODERRA/assets/projects/arch_cliffside/img (2).png",
+    "/SODERRA/assets/projects/arch_cliffside/img (3).png",
+    "/SODERRA/assets/projects/arch_cliffside/img (4).png"
 ];
 
 const cliffPreview =
@@ -523,10 +523,10 @@ if (cliffPreview) {
 }
 
 const houseImages = [
-    "/SODERRA/assets/projects/arch_houseside/img (5).jpg",
-    "/SODERRA/assets/projects/arch_houseside/img (6).jpg",
-    "/SODERRA/assets/projects/arch_houseside/img (3).jpg",
-    "/SODERRA/assets/projects/arch_houseside/img (4).jpg"
+    "/SODERRA/assets/projects/arch_houseside/img (5).png",
+    "/SODERRA/assets/projects/arch_houseside/img (6).png",
+    "/SODERRA/assets/projects/arch_houseside/img (3).png",
+    "/SODERRA/assets/projects/arch_houseside/img (4).png"
 ];
 
 const housePreview =

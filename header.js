@@ -365,3 +365,55 @@ if (synthPreview) {
     }, 2000);
 
 }
+
+const hk01Images = [
+    "/SODERRA/assets/projects/pho_hk-city/img (1).jpg",
+    "/SODERRA/assets/projects/pho_hk-city/img (2).jpg",
+    "/SODERRA/assets/projects/pho_hk-city/img (3).jpg",
+    "/SODERRA/assets/projects/pho_hk-city/img (4).jpg"
+];
+
+const hk01Preview =
+    document.getElementById("hk01-preview");
+
+let hk01Index = 0;
+
+if (hk01Preview) {
+
+    setInterval(() => {
+
+        hk01Index =
+            (hk01Index + 1) % hk01Images.length;
+
+        hk01Preview.src =
+            hk01Images[hk01Index];
+
+    }, 2000);
+
+}
+
+const hk02Images = [
+    "/SODERRA/assets/projects/pho_hk-ground/img (1).jpg",
+    "/SODERRA/assets/projects/pho_hk-ground/img (2).jpg",
+    "/SODERRA/assets/projects/pho_hk-ground/img (3).jpg",
+    "/SODERRA/assets/projects/pho_hk-ground/img (4).jpg"
+];
+
+const hk02Preview =
+    document.getElementById("hk02-preview");
+
+let hk02Index = 0;
+
+if (hk02Preview) {
+
+    setInterval(() => {
+
+        hk02Index =
+            (hk02Index + 1) % hk02Images.length;
+
+        hk02Preview.src =
+            hk02Images[hk02Index];
+
+    }, 2000);
+
+}
